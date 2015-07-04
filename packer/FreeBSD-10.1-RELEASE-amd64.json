@@ -1,0 +1,83 @@
+{
+  "variables": {
+    "arch": "amd64",
+    "cloud_token": "{{ env `ATLAS_CLOUD_TOKEN` }}",
+    "guest_os_type": "FreeBSD_64",
+    "iso_version": "FreeBSD-10.1-RELEASE-amd64",
+    "iso_sha256": "0c3d64ce48c3ef761761d0fea07e1935e296f8c045c249118bc91a7faf053a6b",
+    "mirror": "http://ftp.freebsd.org/pub/FreeBSD",
+    "release": "10.1",
+    "version": "0.1"
+  },
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "export {{ .Vars  }} && cat {{ .Path  }} | su -m",
+      "scripts": [
+        "scripts/postinstall.sh",
+        "scripts/avahi.sh",
+        "scripts/vagrant.sh",
+        "scripts/vmtools.sh",
+        "scripts/ansible.sh",
+        "scripts/cleanup.sh",
+        "scripts/zerodisk.sh"
+      ]
+    }
+  ],
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "iso_urls": [
+        "iso/{{ user `iso_version` }}-disc1.iso",
+        "{{ user `mirror` }}/releases/{{ user `arch` }}/{{ user `arch` }}/ISO-IMAGES/{{ user `release` }}/{{ user `iso_version` }}-disc1.iso"
+      ],
+      "iso_checksum": "{{ user `iso_sha256` }}",
+      "iso_checksum_type": "sha256",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_wait_timeout": "1000s",
+      "guest_additions_path": "VBoxGuestAdditions_{{ .Version }}.iso",
+      "virtualbox_version_file": ".vbox_version",
+      "guest_os_type": "{{ user `guest_os_type` }}",
+      "headless": "false",
+      "shutdown_command": "echo 'shutdown -p now' | sudo su -",
+      "boot_wait": "10s",
+      "http_directory": "http",
+      "disk_size": 10240,
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{ .Name }}",
+          "--memory",
+          "512"
+        ],
+        [
+          "modifyvm",
+          "{{ .Name }}",
+          "--cpus",
+          "1"
+        ]
+      ],
+      "vm_name": "box",
+      "boot_command": [
+        "<esc><wait>",
+        "boot -s<enter>",
+        "<wait10><wait5>",
+        "/bin/sh<enter><wait>",
+        "mdmfs -s 100m md1 /tmp<enter><wait>",
+        "mdmfs -s 100m md2 /mnt<enter><wait>",
+        "dhclient -l /tmp/dhclient.lease.em0 em0<enter><wait>",
+        "<wait5>",
+        "fetch -o /tmp/install.sh http://{{ .HTTPIP }}:{{ .HTTPPort }}/install.sh && chmod +x /tmp/install.sh && /tmp/install.sh {{ .Name }}<enter>"
+      ]
+    }
+  ],
+  "post-processors": [
+    [{
+      "type": "vagrant",
+      "vagrantfile_template": "vagrantfile.tpl",
+      "output": "./builds/{{ user `iso_version` }}.box"
+    }]
+  ]
+}
