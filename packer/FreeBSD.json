@@ -1,11 +1,11 @@
 {
   "variables": {
-    "arch": "amd64",
     "guest_os_type": "FreeBSD_64",
-    "iso_version": "FreeBSD-10.1-RELEASE-amd64",
+    "release": "10.1",
+    "branch": "RELEASE",
+    "arch": "amd64",
     "iso_sha256": "0c3d64ce48c3ef761761d0fea07e1935e296f8c045c249118bc91a7faf053a6b",
-    "mirror": "http://ftp.freebsd.org/pub/FreeBSD",
-    "release": "10.1"
+    "mirror": "http://ftp.freebsd.org/pub/FreeBSD"
   },
   "provisioners": [
     {
@@ -26,8 +26,8 @@
     {
       "type": "virtualbox-iso",
       "iso_urls": [
-        "iso/{{ user `iso_version` }}-disc1.iso",
-        "{{ user `mirror` }}/releases/{{ user `arch` }}/{{ user `arch` }}/ISO-IMAGES/{{ user `release` }}/{{ user `iso_version` }}-disc1.iso"
+        "iso/FreeBSD-{{ user `release` }}-{{ user `branch` }}-{{ user `arch` }}-disc1.iso",
+        "{{ user `mirror` }}/releases/ISO-IMAGES/{{ user `release` }}/FreeBSD-{{ user `release` }}-{{ user `branch` }}-{{ user `arch` }}-disc1.iso"
       ],
       "iso_checksum": "{{ user `iso_sha256` }}",
       "iso_checksum_type": "sha256",
@@ -75,7 +75,7 @@
     [{
       "type": "vagrant",
       "vagrantfile_template": "vagrantfile.tpl",
-      "output": "./builds/{{ user `iso_version` }}.box"
+      "output": "./builds/FreeBSD-{{ user `release` }}-{{ user `branch` }}-{{ user `arch` }}.box"
     }]
   ]
 }
