@@ -1,13 +1,11 @@
 {
   "variables": {
     "arch": "amd64",
-    "cloud_token": "{{ env `ATLAS_CLOUD_TOKEN` }}",
     "guest_os_type": "FreeBSD_64",
     "iso_version": "FreeBSD-10.1-RELEASE-amd64",
     "iso_sha256": "0c3d64ce48c3ef761761d0fea07e1935e296f8c045c249118bc91a7faf053a6b",
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD",
-    "release": "10.1",
-    "version": "0.1"
+    "release": "10.1"
   },
   "provisioners": [
     {
