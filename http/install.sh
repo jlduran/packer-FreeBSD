@@ -64,11 +64,11 @@ zfs set readonly=on zroot/var/empty
 echo 'zfs_enable="YES"' > /mnt/zroot/etc/rc.conf.d/zfs
 
 # basic network options
-# Vagrant expect these to be in /etc/rc.conf
+# Vagrant expects these to be in /etc/rc.conf
 # echo 'hostname="${NAME}"' > /mnt/zroot/etc/rc.conf.d/hostname
 # echo 'ifconfig_em0="DHCP"' > /mnt/zroot/etc/rc.conf.d/network
-echo 'hostname="${NAME}"' > /mnt/zroot/etc/rc.conf
-echo 'ifconfig_em0="DHCP"' > /mnt/zroot/etc/rc.conf
+echo 'hostname="${NAME}"' >> /mnt/zroot/etc/rc.conf
+echo 'ifconfig_em0="DHCP"' >> /mnt/zroot/etc/rc.conf
 
 # network daemon (miscellaneous)
 # Keep compatibility with cloud providers
