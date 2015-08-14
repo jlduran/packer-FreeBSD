@@ -66,9 +66,9 @@ echo 'zfs_enable="YES"' > /mnt/zroot/etc/rc.conf.d/zfs
 # basic network options
 # Vagrant expects these to be in /etc/rc.conf
 # echo 'hostname="${NAME}"' > /mnt/zroot/etc/rc.conf.d/hostname
-# echo 'ifconfig_em0="DHCP"' > /mnt/zroot/etc/rc.conf.d/network
+# echo 'ifconfig_vtnet0="DHCP"' > /mnt/zroot/etc/rc.conf.d/network
 echo 'hostname="${NAME}"' >> /mnt/zroot/etc/rc.conf
-echo 'ifconfig_em0="DHCP"' >> /mnt/zroot/etc/rc.conf
+echo 'ifconfig_vtnet0="DHCP"' >> /mnt/zroot/etc/rc.conf
 
 # network daemon (miscellaneous)
 # Keep compatibility with cloud providers

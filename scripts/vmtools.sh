@@ -5,13 +5,6 @@ case "$PACKER_BUILDER_TYPE" in
 	virtualbox-iso|virtualbox-ovf)
 		pkg install -y virtualbox-ose-additions
 
-		{
-			echo 'ifconfig_vtnet0_name="em0"'
-			echo 'ifconfig_vtnet1_name="em1"'
-			echo 'ifconfig_vtnet2_name="em2"'
-			echo 'ifconfig_vtnet3_name="em3"'
-		} >> /etc/rc.conf.d/network
-
 		echo 'vboxguest_enable="YES"' > /etc/rc.conf.d/vboxguest
 		echo 'vboxnet_enable="YES"' > /etc/rc.conf.d/vboxnet
 		echo 'vboxservice_enable="YES"' > /etc/rc.conf.d/vboxservice
