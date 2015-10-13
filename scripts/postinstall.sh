@@ -6,7 +6,7 @@ ntpdate -v -b in.pool.ntp.org
 date > /etc/vagrant_box_build_time
 
 # disable X11
-echo 'OPTIONS_UNSET="X11"' >> /etc/make.conf
+echo 'OPTIONS_UNSET+=X11' >> /etc/make.conf
 
 # update FreeBSD
 freebsd-update --not-running-from-cron fetch install
