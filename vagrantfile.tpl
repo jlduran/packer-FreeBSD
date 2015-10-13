@@ -10,8 +10,8 @@ Vagrant.configure(2) do |config|
   # config.ssh.shell = '/bin/tcsh'
 
   config.vm.define 'hostname' do |hostname|
-    hostname.vm.box = 'FreeBSD-10.2-RELEASE-amd64'
-    # hostname.vm.box_url = './builds/FreeBSD-10.2-RELEASE-amd64.box'
+    hostname.vm.box = 'FreeBSD-10.3-RELEASE-amd64'
+    # hostname.vm.box_url = './builds/FreeBSD-10.3-RELEASE-amd64.box'
     hostname.vm.network :private_network, ip: '10.10.10.10'
   end
 end

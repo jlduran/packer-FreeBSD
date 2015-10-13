@@ -36,7 +36,7 @@ To create a box:
 
 4.  Add it to the list of Vagrant boxes:
 
-        $ vagrant box add builds/FreeBSD-10.2-RELEASE-amd64.box --name FreeBSD-10.2-RELEASE-amd64
+        $ vagrant box add builds/FreeBSD-10.3-RELEASE-amd64.box --name FreeBSD-10.3-RELEASE-amd64
 
 ### Handling `.iso` and `.box` files
 

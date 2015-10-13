@@ -1,7 +1,7 @@
 {
   "variables": {
     "guest_os_type": "FreeBSD_64",
-    "release": "10.2",
+    "release": "10.3",
     "branch": "RELEASE",
     "arch": "amd64",
     "mirror": "http://ftp.freebsd.org/pub/FreeBSD"
