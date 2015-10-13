@@ -20,7 +20,7 @@ To create a box:
 
         $ git clone https://github.com/jlduran/packer-FreeBSD.git
 
-2.  _(Optional)_ Modify settings by editing the `.json` files to be built.  The files are located under the `packer` directory.
+2.  _(Optional)_ Adjust settings by editing the `FreeBSD.json` file.  This file is located under the `packer` directory.
 
 3.  Build the box:
 
