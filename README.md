@@ -1,8 +1,11 @@
-# packer-FreeBSD
+packer-FreeBSD
+==============
 
-This repository contains the necessary tools to build a base FreeBSD virtual machine using Packer.
+This repository contains the necessary tools to build a base FreeBSD
+virtual machine using Packer.
 
-## Pre-requisites
+Pre-requisites
+--------------
 
 - [Packer]
 
@@ -12,7 +15,8 @@ This repository contains the necessary tools to build a base FreeBSD virtual mac
 
 - [VirtualBox] or [VMWare Fusion]
 
-## Instructions
+Instructions
+------------
 
 To create a box:
 
@@ -20,7 +24,8 @@ To create a box:
 
         $ git clone https://github.com/jlduran/packer-FreeBSD.git
 
-2.  _(Optional)_ Adjust settings by editing the `FreeBSD.json` file.  This file is located under the `packer` directory.
+2.  _(Optional)_ Adjust the settings by editing the `FreeBSD.json` file.
+    This file is located under the `packer` directory.
 
 3.  Build the box:
 
@@ -33,15 +38,19 @@ To create a box:
 
 ### Handling `.iso` and `.box` files
 
-Packer will automatically download the `.iso` image if it does not find the right one under the `iso` directory.  Optionally, you can download the `.iso` image and save it to the `iso` directory.
+Packer will automatically download the `.iso` image if it does not find
+the right one under the `iso` directory.  Optionally, you can download
+the `.iso` image and save it to the `iso` directory.
 
 `.box` files will be created under the `builds` directory.
 
-Once the box is created, the `.iso` image and the `.box` files can be discarded to free up some space.
+Once the box is created, the `.iso` image and the `.box` files can be
+discarded to free up some space.
 
 ### NFS Synced Folders
 
-Instead of typing the password on every `vagrant up` in order to modify system files, the `sudoers` file can be modified to avoid it:
+Instead of typing the password on every `vagrant up` in order to modify
+system files, the `sudoers` file can be modified to avoid it:
 
     $ sudo visudo
 
@@ -57,10 +66,6 @@ Add the following blocks into their respective sections:
     # User privilege specification
     ...
     %staff	ALL=(root) NOPASSWD: VAGRANT_EXPORTS_ADD, VAGRANT_NFSD, VAGRANT_EXPORTS_REMOVE
-
-#### To Do
-
-- [ ] Use a variable to increase memory and avoid ZFS warnings
 
 [Packer]: https://www.packer.io
 [Vagrant]: https://www.vagrantup.com

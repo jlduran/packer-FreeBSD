@@ -1,0 +1,35 @@
+if [ "$(uname -p)" = 'amd64' ]; then
+	DISTRIBUTIONS="base.txz kernel.txz lib32.txz"
+else
+	DISTRIBUTIONS="base.txz kernel.txz"
+fi
+
+if [ -e /dev/ada0 ]; then
+	PARTITIONS=ada0 # VirtualBoxx
+else
+	PARTITIONS=da0  # VMWare
+fi
+
+#!/bin/sh
+
+# disable X11
+echo 'OPTIONS_UNSET+=X11' >> /etc/make.conf
+
+# basic network options
+# Vagrant expects this to be in /etc/rc.conf
+# echo 'ifconfig_vtnet0="DHCP"' > /etc/rc.conf.d/network
+echo 'hostname=""' >> /etc/rc.conf
+echo 'ifconfig_vtnet0="DHCP"' >> /etc/rc.conf
+
+# network daemon (miscellaneous)
+# keep compatibility with cloud providers
+# echo 'sshd_enable="YES"' > /etc/rc.conf.d/sshd
+echo 'sshd_enable="YES"' >> /etc/rc.conf
+
+# set up user accounts
+mkdir -p /home/vagrant
+echo -n 'vagrant' | pw useradd vagrant -c 'Vagrant User' -d /home/vagrant -G wheel -s /bin/sh -h 0
+chown 1001:1001 /home/vagrant
+
+# reboot
+reboot
