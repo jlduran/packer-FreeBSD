@@ -53,6 +53,11 @@
           "--cpus", "1",
           "--nictype1", "virtio",
           "--nictype2", "virtio"
+        ],
+        [
+          "storagectl", "{{ .Name  }}",
+          "--name", "IDE Controller",
+          "--remove"
         ]
       ],
       "vm_name": "box",
