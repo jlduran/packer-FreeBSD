@@ -4,7 +4,7 @@
 pkg install -y bash sudo
 
 # fstab
-echo 'fdesc	/dev/fd	fdescfs	rw	0	0' >> /etc/fstab
+echo 'fdesc		/dev/fd		fdescfs	rw	0	0' >> /etc/fstab
 
 # use bash shell
 chsh -s /usr/local/bin/bash vagrant
