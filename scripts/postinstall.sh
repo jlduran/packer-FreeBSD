@@ -1,14 +1,13 @@
 #!/bin/sh
 
-# set the time correctly
+# Set the time
 ntpdate -v -b in.pool.ntp.org
-date > /etc/vagrant_box_build_time
 
-# update FreeBSD
+# Update FreeBSD
 freebsd-update --not-running-from-cron fetch install
 
-# pkg bootstrap
-env ASSUME_ALWAYS_YES=true pkg bootstrap
+# Bootstrap pkg
+env ASSUME_ALWAYS_YES=yes pkg bootstrap -yf
 
-# upgrade packages
+# Upgrade packages
 pkg upgrade -y

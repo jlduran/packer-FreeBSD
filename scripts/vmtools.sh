@@ -11,7 +11,6 @@ case "$PACKER_BUILDER_TYPE" in
 
 		cat >> /boot/loader.conf.local <<- END
 		#VIRTUALBOX-BEGIN
-		if_vtnet_load="YES"
 		vboxdrv_load="YES"
 		virtio_balloon_load="YES"
 		virtio_blk_load="YES"
@@ -21,15 +20,13 @@ case "$PACKER_BUILDER_TYPE" in
 		;;
 
 	vmware-iso|vmware-vmx)
-		mkdir /tmp/vmfusion
-		mkdir /tmp/vmfusion-archive
-		mount -o loop /home/vagrant/linux.iso /tmp/vmfusion
-		tar xzf /tmp/vmfusion/VMwareTools-*.tar.gz -C /tmp/vmfusion-archive
-		/tmp/vmfusion-archive/vmware-tools-distrib/vmware-install.pl --default
-		umount /tmp/vmfusion
-		rm -rf /tmp/vmfusion
-		rm -rf /tmp/vmfusion-archive
-		rm /home/vagrant/*.iso
+		pkg install -y open-vm-tools-nox11
+
+		echo 'vmware_guest_vmblock_enable="YES"' >> /etc/rc.conf
+		echo 'vmware_guest_vmhgfs_enable="YES"' >> /etc/rc.conf
+		echo 'vmware_guest_vmmemctl_enable="YES"' >> /etc/rc.conf
+		echo 'vmware_guest_vmxnet_enable="YES"' >> /etc/rc.conf
+		echo 'vmware_guestd_enable="YES"' >> /etc/rc.conf
 		;;
 
 	parallels-iso|parallels-pvm)

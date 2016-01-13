@@ -5,31 +5,66 @@ else
 fi
 
 if [ -e /dev/ada0 ]; then
-	PARTITIONS=ada0 # VirtualBoxx
+	GEOM=ada0 # VirtualBoxx
 else
-	PARTITIONS=da0  # VMWare
+	GEOM=da0  # VMWare
 fi
+
+PARTITIONS="$GEOM { 512K freebsd-boot /boot, 1G freebsd-swap, auto freebsd-ufs / }"
 
 #!/bin/sh
 
-# disable X11
+# Define GPT labels
+if [ -e /dev/ada0 ]; then
+	GEOM=ada0 # VirtualBoxx
+else
+	GEOM=da0  # VMWare
+fi
+gpart modify -i 1 -l bootfs -t freebsd-boot $GEOM
+gpart modify -i 2 -l swapfs -t freebsd-swap $GEOM
+gpart modify -i 3 -l rootfs -t freebsd-ufs $GEOM
+sed -i '' 's@'"$GEOM"'p3@gpt/rootfs@g' /etc/fstab
+sed -i '' 's@'"$GEOM"'p2@gpt/swapfs@g' /etc/fstab
+
+# Disable X11
 echo 'OPTIONS_UNSET+=X11' >> /etc/make.conf
 
-# basic network options
-# Vagrant expects this to be in /etc/rc.conf
-# echo 'ifconfig_vtnet0="DHCP"' > /etc/rc.conf.d/network
-echo 'hostname=""' >> /etc/rc.conf
-echo 'ifconfig_vtnet0="DHCP"' >> /etc/rc.conf
+# Basic network options
+echo 'hostname="localhost"' >> /etc/rc.conf
 
-# network daemon (miscellaneous)
-# keep compatibility with cloud providers
-# echo 'sshd_enable="YES"' > /etc/rc.conf.d/sshd
+# Use DHCP to get the network configuration
+echo 'ifconfig_DEFAULT="SYNCDHCP"' >> /etc/rc.conf
+
+# Enable sshd by default
 echo 'sshd_enable="YES"' >> /etc/rc.conf
+# Disable DNS lookups by default to make SSH connect quickly
+sed -i '' 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
 
-# set up user accounts
+# Disable sendmail
+{
+	echo 'sendmail_enable="NO"'
+	echo 'sendmail_submit_enable="NO"'
+	echo 'sendmail_outbound_enable="NO"'
+	echo 'sendmail_msp_queue_enable="NO"'
+} >> /etc/rc.conf
+
+# TODO: Set up the root account/password here and install everything as root.
+#       Set the vagrant account in vagrant.sh
+# Create the vagrant user with a password of vagrant
+pw groupadd vagrant -g 1001
 mkdir -p /home/vagrant
-echo -n 'vagrant' | pw useradd vagrant -c 'Vagrant User' -d /home/vagrant -G wheel -s /bin/sh -h 0
-chown 1001:1001 /home/vagrant
+pw useradd vagrant -m -M 0755 -w yes -n vagrant -u 1001 -g 1001 -G 0 \
+	-c 'Vagrant User' -d '/home/vagrant' -s '/usr/local/bin/bash'
 
-# reboot
+# Reboot quickly, don't wait at the panic screen
+{
+	echo 'debug.trace_on_panic=1'
+	echo 'debug.debugger_on_panic=0'
+	echo 'kern.panic_reboot_wait_time=0'
+} >> /etc/sysctl.conf
+
+# The console is not interactive, so we might as well boot quickly
+echo 'autoboot_delay="-1"'  >> /boot/loader.conf
+
+# Reboot
 reboot

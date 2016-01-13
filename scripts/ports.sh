@@ -1,4 +1,4 @@
 #!/bin/sh
 
-# install ports collection
+# Install ports collection
 portsnap --interactive fetch extract

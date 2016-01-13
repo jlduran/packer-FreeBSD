@@ -4,6 +4,8 @@ packer-FreeBSD
 This repository contains the necessary tools to build a base FreeBSD
 virtual machine using Packer.
 
+There are [official FreeBSD] vagrant VMs available from the Atlas Cloud.
+
 Pre-requisites
 --------------
 
@@ -67,6 +69,7 @@ Add the following blocks into their respective sections:
     ...
     %staff	ALL=(root) NOPASSWD: VAGRANT_EXPORTS_ADD, VAGRANT_NFSD, VAGRANT_EXPORTS_REMOVE
 
+[official FreeBSD]: https://atlas.hashicorp.com/freebsd
 [Packer]: https://www.packer.io
 [Vagrant]: https://www.vagrantup.com
 [VirtualBox]: https://www.virtualbox.org

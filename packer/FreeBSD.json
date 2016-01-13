@@ -13,11 +13,11 @@
       "execute_command": "export {{ .Vars  }} && cat {{ .Path  }} | su -m",
       "scripts": [
         "scripts/postinstall.sh",
-        "scripts/ports.sh",
-        "scripts/avahi.sh",
         "scripts/vagrant.sh",
-        "scripts/vmtools.sh",
+        "scripts/avahi.sh",
         "scripts/ansible.sh",
+        "scripts/ports.sh",
+        "scripts/vmtools.sh",
         "scripts/cleanup.sh",
         "scripts/zerodisk.sh"
       ]
@@ -42,7 +42,7 @@
       "hard_drive_interface": "sata",
       "headless": true,
       "iso_interface": "sata",
-      "shutdown_command": "echo 'shutdown -p now' | sudo su -",
+      "shutdown_command": "sudo poweroff",
       "boot_wait": "10s",
       "http_directory": "http",
       "disk_size": 10240,
