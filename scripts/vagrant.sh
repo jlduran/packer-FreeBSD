@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # Install bash & sudo
 pkg install -y bash sudo

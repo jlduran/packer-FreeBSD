@@ -12,7 +12,7 @@ fi
 
 PARTITIONS="$GEOM { 512K freebsd-boot /boot, 1G freebsd-swap, auto freebsd-ufs / }"
 
-#!/bin/sh
+#!/bin/sh -e
 
 # Define GPT labels
 if [ -e /dev/ada0 ]; then

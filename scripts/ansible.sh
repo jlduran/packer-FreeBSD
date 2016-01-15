@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # Install python
 pkg install -y python py27-pip

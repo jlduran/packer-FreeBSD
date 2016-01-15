@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # Install avahi-app
 pkg install -y net/avahi-app

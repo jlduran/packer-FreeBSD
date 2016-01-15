@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # Purge files we no longer need
 rm -f /home/vagrant/*.iso

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # Delete itself
 rm -f /tmp/script.sh

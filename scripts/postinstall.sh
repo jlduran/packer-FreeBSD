@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # Set the time
 ntpdate -v -b in.pool.ntp.org
