@@ -10,9 +10,9 @@
   "provisioners": [
     {
       "type": "shell",
-      "execute_command": "export {{ .Vars  }} && cat {{ .Path  }} | su -m",
+      "execute_command": "export {{ .Vars }} && cat {{ .Path }} | su -m",
       "scripts": [
-        "scripts/postinstall.sh",
+        "scripts/update.sh",
         "scripts/vagrant.sh",
         "scripts/avahi.sh",
         "scripts/ansible.sh",
@@ -55,7 +55,7 @@
           "--nictype2", "virtio"
         ],
         [
-          "storagectl", "{{ .Name  }}",
+          "storagectl", "{{ .Name }}",
           "--name", "IDE Controller",
           "--remove"
         ]
