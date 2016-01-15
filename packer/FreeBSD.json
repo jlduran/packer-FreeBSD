@@ -10,7 +10,7 @@
   "provisioners": [
     {
       "type": "shell",
-      "execute_command": "export {{ .Vars }} && cat {{ .Path }} | su -m",
+      "execute_command": "chmod +x {{ .Path }}; env {{ .Vars }} {{ .Path }}",
       "scripts": [
         "scripts/update.sh",
         "scripts/vagrant.sh",
@@ -18,8 +18,7 @@
         "scripts/ansible.sh",
         "scripts/ports.sh",
         "scripts/vmtools.sh",
-        "scripts/cleanup.sh",
-        "scripts/zerodisk.sh"
+        "scripts/cleanup.sh"
       ]
     }
   ],
@@ -32,7 +31,7 @@
       ],
       "iso_checksum": "{{ user `iso_sha256` }}",
       "iso_checksum_type": "sha256",
-      "ssh_username": "vagrant",
+      "ssh_username": "root",
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "1000s",
@@ -42,7 +41,7 @@
       "hard_drive_interface": "sata",
       "headless": true,
       "iso_interface": "sata",
-      "shutdown_command": "sudo poweroff",
+      "shutdown_command": "poweroff",
       "boot_wait": "10s",
       "http_directory": "http",
       "disk_size": 10240,

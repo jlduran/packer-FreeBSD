@@ -1,8 +1,11 @@
 #!/bin/sh -e
 
+# Disable root logins
+sed -i '' 's/PermitRootLogin yes/#PermitRootLogin no/g' /etc/ssh/sshd_config
+
 # Purge files we no longer need
-rm -f /home/vagrant/*.iso
-rm -f /home/vagrant/.vbox_version
+rm -f /root/*.iso
+rm -f /root/.vbox_version
 rm -rf /tmp/*
 rm -rf /var/db/freebsd-update/files/*
 rm -f /var/db/freebsd-update/*-rollback

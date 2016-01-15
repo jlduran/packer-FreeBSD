@@ -39,6 +39,8 @@ echo 'ifconfig_DEFAULT="SYNCDHCP"' >> /etc/rc.conf
 echo 'sshd_enable="YES"' >> /etc/rc.conf
 # Disable DNS lookups by default to make SSH connect quickly
 sed -i '' 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
+# Allow root logins during build.  Deactivate upon cleanup
+sed -i '' 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
 # Disable sendmail
 {
@@ -48,13 +50,8 @@ sed -i '' 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
 	echo 'sendmail_msp_queue_enable="NO"'
 } >> /etc/rc.conf
 
-# TODO: Set up the root account/password here and install everything as root.
-#       Set the vagrant account in vagrant.sh
-# Create the vagrant user with a password of vagrant
-pw groupadd vagrant -g 1001
-mkdir -p /home/vagrant
-pw useradd vagrant -m -M 0755 -w yes -n vagrant -u 1001 -g 1001 -G 0 \
-	-c 'Vagrant User' -d '/home/vagrant' -s '/usr/local/bin/bash'
+# Change root's password to vagrant
+echo 'vagrant' | pw usermod root -h 0
 
 # Reboot quickly, don't wait at the panic screen
 {
