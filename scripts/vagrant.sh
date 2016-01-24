@@ -15,6 +15,7 @@ echo 'vagrant ALL=(ALL) NOPASSWD: ALL' > /usr/local/etc/sudoers.d/vagrant
 
 # Configure the vagrant ssh key
 mkdir /home/vagrant/.ssh
+chmod 700 /home/vagrant/.ssh
 fetch -am --no-verify-peer -o /home/vagrant/.ssh/authorized_keys \
 	'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 chown -R 1001 /home/vagrant/.ssh

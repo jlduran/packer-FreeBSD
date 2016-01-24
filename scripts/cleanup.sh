@@ -12,3 +12,4 @@ rm -f /var/db/freebsd-update/*-rollback
 rm -rf /var/db/freebsd-update/install.*
 rm -f /var/db/pkg/repo-*.sqlite
 rm -rf /boot/kernel.old
+rm -f /etc/ssh/ssh_host_*
