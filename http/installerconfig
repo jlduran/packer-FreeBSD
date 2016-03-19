@@ -5,7 +5,7 @@ else
 fi
 
 if [ -e /dev/ada0 ]; then
-	GEOM=ada0 # VirtualBoxx
+	GEOM=ada0 # VirtualBox
 else
 	GEOM=da0  # VMWare
 fi
@@ -16,7 +16,7 @@ PARTITIONS="$GEOM { 512K freebsd-boot /boot, 1G freebsd-swap, auto freebsd-ufs /
 
 # Define GPT labels
 if [ -e /dev/ada0 ]; then
-	GEOM=ada0 # VirtualBoxx
+	GEOM=ada0 # VirtualBox
 else
 	GEOM=da0  # VMWare
 fi
@@ -39,7 +39,7 @@ echo 'ifconfig_DEFAULT="SYNCDHCP"' >> /etc/rc.conf
 echo 'sshd_enable="YES"' >> /etc/rc.conf
 # Disable DNS lookups by default to make SSH connect quickly
 sed -i '' 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
-# Allow root logins during build.  Deactivate upon cleanup
+# Allow root logins during build.  Deactivated upon cleanup
 sed -i '' 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
 # Disable sendmail
