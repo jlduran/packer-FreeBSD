@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # Install python
-pkg install -y python py27-pip
+pkg install -y python
 
 # Install root certs
 pkg install -y ca_root_nss
