@@ -1,13 +1,16 @@
 #!/bin/sh -e
 
+RC_CONF_DIR=/usr/local/etc/rc.conf.d
+
 case "$PACKER_BUILDER_TYPE" in
 
 	virtualbox-iso|virtualbox-ovf)
 		pkg install -y virtualbox-ose-additions
 
-		echo 'vboxguest_enable="YES"' > /etc/rc.conf.d/vboxguest
-		echo 'vboxnet_enable="YES"' > /etc/rc.conf.d/vboxnet
-		echo 'vboxservice_enable="YES"' > /etc/rc.conf.d/vboxservice
+		mkdir -p "$RC_CONF_DIR"
+		sysrc -f "$RC_CONF_DIR"/vboxguest vboxguest_enable=YES
+		sysrc -f "$RC_CONF_DIR"/vboxnet vboxnet_enable=YES
+		sysrc -f "$RC_CONF_DIR"/vboxservice vboxservice_enable=YES
 
 		cat >> /boot/loader.conf.local <<- END
 		#VIRTUALBOX-BEGIN
