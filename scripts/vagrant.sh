@@ -12,6 +12,7 @@ pw useradd vagrant -m -M 0755 -w yes -n vagrant -u 1001 -g 1001 -G 0 \
 
 # Configure sudo to allow the vagrant user
 echo 'vagrant ALL=(ALL) NOPASSWD: ALL' > /usr/local/etc/sudoers.d/vagrant
+chmod 440 /usr/local/etc/sudoers.d/vagrant
 
 # Configure the vagrant ssh key
 mkdir /home/vagrant/.ssh
