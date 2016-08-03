@@ -34,7 +34,7 @@
       "ssh_password": "vagrant",
       "ssh_port": 22,
       "ssh_wait_timeout": "1000s",
-      "guest_additions_path": "VBoxGuestAdditions_{{ .Version }}.iso",
+      "guest_additions_mode": "disable",
       "virtualbox_version_file": ".vbox_version",
       "guest_os_type": "{{ user `guest_os_type` }}",
       "hard_drive_interface": "sata",
@@ -47,8 +47,9 @@
       "vboxmanage": [
         [
           "modifyvm", "{{ .Name }}",
-          "--memory", "512",
+          "--audio", "none",
           "--cpus", "1",
+          "--memory", "512",
           "--nictype1", "virtio",
           "--nictype2", "virtio"
         ],
