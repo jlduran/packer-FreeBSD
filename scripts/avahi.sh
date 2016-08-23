@@ -3,7 +3,7 @@
 RC_CONF_DIR=/usr/local/etc/rc.conf.d
 
 # Install avahi-app
-pkg install -y net/avahi-app
+pkg install -y avahi-app
 
 # Enable avahi-daemon
 mkdir -p "$RC_CONF_DIR"

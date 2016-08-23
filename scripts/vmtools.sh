@@ -25,11 +25,15 @@ case "$PACKER_BUILDER_TYPE" in
 	vmware-iso|vmware-vmx)
 		pkg install -y open-vm-tools-nox11
 
-		echo 'vmware_guest_vmblock_enable="YES"' >> /etc/rc.conf
-		echo 'vmware_guest_vmhgfs_enable="YES"' >> /etc/rc.conf
-		echo 'vmware_guest_vmmemctl_enable="YES"' >> /etc/rc.conf
-		echo 'vmware_guest_vmxnet_enable="YES"' >> /etc/rc.conf
-		echo 'vmware_guestd_enable="YES"' >> /etc/rc.conf
+		cat >> /etc/rc.conf <<- END
+		#VMWARE-BEGIN
+		vmware_guest_vmblock_enable="YES"
+		vmware_guest_vmhgfs_enable="YES"
+		vmware_guest_vmmemctl_enable="YES"
+		vmware_guest_vmxnet_enable="YES"
+		vmware_guestd_enable="YES"
+		#VMWARE-END
+		END
 		;;
 
 	parallels-iso|parallels-pvm)

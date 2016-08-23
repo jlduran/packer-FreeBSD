@@ -10,21 +10,9 @@ else
 	GEOM=da0  # VMWare
 fi
 
-PARTITIONS="$GEOM { 512K freebsd-boot /boot, 1G freebsd-swap, auto freebsd-ufs / }"
+PARTITIONS="$GEOM"
 
 #!/bin/sh -e
-
-# Define GPT labels
-if [ -e /dev/ada0 ]; then
-	GEOM=ada0 # VirtualBox
-else
-	GEOM=da0  # VMWare
-fi
-gpart modify -i 1 -l bootfs -t freebsd-boot $GEOM
-gpart modify -i 2 -l swapfs -t freebsd-swap $GEOM
-gpart modify -i 3 -l rootfs -t freebsd-ufs $GEOM
-sed -i '' 's@'"$GEOM"'p3@gpt/rootfs@g' /etc/fstab
-sed -i '' 's@'"$GEOM"'p2@gpt/swapfs@g' /etc/fstab
 
 # Disable X11
 echo 'OPTIONS_UNSET+=X11' >> /etc/make.conf
@@ -61,7 +49,7 @@ echo 'vagrant' | pw usermod root -h 0
 } >> /etc/sysctl.conf
 
 # The console is not interactive, so we might as well boot quickly
-echo 'autoboot_delay="-1"'  >> /boot/loader.conf
+echo 'autoboot_delay="-1"' >> /boot/loader.conf
 
 # Reboot
 reboot

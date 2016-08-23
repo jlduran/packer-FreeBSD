@@ -1,0 +1,14 @@
+{
+  "cpus": "1",
+  "disk_size": "10240",
+  "memory": "512",
+  "release": "11.0",
+  "branch": "-RELEASE",
+  "snapshot": "",
+  "revision": "",
+  "directory": "releases",
+  "arch": "amd64",
+  "guest_os_type": "FreeBSD_64",
+  "filesystem": "ufs",
+  "mirror": "http://ftp.freebsd.org/pub/FreeBSD"
+}
