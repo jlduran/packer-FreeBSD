@@ -5,7 +5,7 @@ RC_CONF_DIR=/usr/local/etc/rc.conf.d
 case "$PACKER_BUILDER_TYPE" in
 
 	virtualbox-iso|virtualbox-ovf)
-		pkg install -y virtualbox-ose-additions
+		pkg install -y virtualbox-ose-additions-nox11
 
 		mkdir -p "$RC_CONF_DIR"
 		sysrc -f "$RC_CONF_DIR"/vboxguest vboxguest_enable=YES
