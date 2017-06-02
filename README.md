@@ -174,6 +174,11 @@ def private_key_path(server_name)
 end
 ```
 
+TODO
+====
+
+- [ ] Fix rc.conf dir
+
 [official FreeBSD]: https://atlas.hashicorp.com/freebsd
 [Release Branches]: https://www.freebsd.org/doc/en/books/dev-model/release-branches.html
 [Packer]: https://www.packer.io/docs/installation.html
