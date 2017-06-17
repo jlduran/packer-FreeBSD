@@ -33,12 +33,7 @@ sed -i '' 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
 sed -i '' 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
 
 # Disable sendmail
-{
-	echo 'sendmail_enable="NO"'
-	echo 'sendmail_submit_enable="NO"'
-	echo 'sendmail_outbound_enable="NO"'
-	echo 'sendmail_msp_queue_enable="NO"'
-} >> /etc/rc.conf
+echo 'sendmail_enable="NONE"' >> /etc/rc.conf
 
 # Change root's password to vagrant
 echo 'vagrant' | pw usermod root -h 0
