@@ -6,7 +6,7 @@
       "scripts": [
         "scripts/update.sh",
         "scripts/vagrant.sh",
-        "scripts/avahi.sh",
+        "scripts/zeroconf.sh",
         "scripts/ansible.sh",
         "scripts/ports.sh",
         "scripts/vmtools.sh",
