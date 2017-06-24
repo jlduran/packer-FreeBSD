@@ -8,6 +8,7 @@ case "$PACKER_BUILDER_TYPE" in
 		pkg install -y virtualbox-ose-additions-nox11
 
 		mkdir -p "$RC_CONF_DIR"
+		sysrc -f "$RC_CONF_DIR"/dbus dbus_enable=YES
 		sysrc -f "$RC_CONF_DIR"/vboxguest vboxguest_enable=YES
 		sysrc -f "$RC_CONF_DIR"/vboxnet vboxnet_enable=YES
 		sysrc -f "$RC_CONF_DIR"/vboxservice vboxservice_enable=YES
