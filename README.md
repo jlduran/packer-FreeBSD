@@ -117,26 +117,6 @@ the `.iso` image and save it to the `iso` directory.
 
 `.box` files will be created under the `builds` directory.
 
-### NFS Synced Folders
-
-Instead of typing the password on every `vagrant up` in order to modify
-system files, the `sudoers` file can be modified to avoid it:
-
-    $ sudo visudo
-
-Add the following blocks into their respective sections:
-
-    # Cmnd alias specification
-    Cmnd_Alias	VAGRANT_EXPORTS_ADD = /usr/bin/tee -a /etc/exports
-    Cmnd_Alias	VAGRANT_NFSD = /sbin/nfsd restart
-    Cmnd_Alias	VAGRANT_EXPORTS_REMOVE = /usr/bin/sed -E -e /*/ d -ibak /etc/exports
-
-    ...
-
-    # User privilege specification
-    ...
-    %staff	ALL=(root) NOPASSWD: VAGRANT_EXPORTS_ADD, VAGRANT_NFSD, VAGRANT_EXPORTS_REMOVE
-
 [official FreeBSD]: https://atlas.hashicorp.com/freebsd
 [Release Branches]: https://www.freebsd.org/doc/en/books/dev-model/release-branches.html
 [Packer]: https://www.packer.io/docs/installation.html

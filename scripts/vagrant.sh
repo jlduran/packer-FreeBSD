@@ -22,10 +22,10 @@ fetch -am --no-verify-peer -o /home/vagrant/.ssh/authorized_keys \
 chown -R 1001 /home/vagrant/.ssh
 chmod 600 /home/vagrant/.ssh/authorized_keys
 
-# NFS configuration
+# Synced folders
+pkg install -y rsync
 echo 'rpcbind_enable="YES"' > /etc/rc.conf.d/rpcbind
 echo 'nfs_server_enable="YES"' > /etc/rc.conf.d/nfsd
-echo 'mountd_flags="-r"' > /etc/rc.conf.d/mountd
 touch /etc/exports
 
 # Set the build time
