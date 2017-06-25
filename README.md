@@ -99,15 +99,15 @@ You can adjust the following variables in `variables.json`:
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:
 
-| Name      | Description                                                               |
-| ----      | -----------                                                               |
-| `update`  | Updates to the latest patch level (if applicable) and the latest packages |
-| `vagrant` | Vagrant-related configuration                                             |
-| `avahi`   | Enables zero-configuration networking                                     |
-| `ansible` | Installs python and CA Root certificates                                  |
-| `ports`   | Installs the FreeBSD ports tree                                           |
-| `vmtools` | Virtual Machine-specific utilities                                        |
-| `cleanup` | Cleanup script                                                            |
+| Name       | Description                                                               |
+| ----       | -----------                                                               |
+| `update`   | Updates to the latest patch level (if applicable) and the latest packages |
+| `vagrant`  | Vagrant-related configuration                                             |
+| `zeroconf` | Enables zero-configuration networking                                     |
+| `ansible`  | Installs python and CA Root certificates                                  |
+| `ports`    | Installs the FreeBSD ports tree                                           |
+| `vmtools`  | Virtual Machine-specific utilities                                        |
+| `cleanup`  | Cleanup script                                                            |
 
 ### Handling `.iso` and `.box` files
 
