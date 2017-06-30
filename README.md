@@ -99,15 +99,15 @@ You can adjust the following variables in `variables.json`:
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:
 
-| Name       | Description                                                               |
-| ----       | -----------                                                               |
-| `update`   | Updates to the latest patch level (if applicable) and the latest packages |
-| `vagrant`  | Vagrant-related configuration                                             |
-| `zeroconf` | Enables zero-configuration networking                                     |
-| `ansible`  | Installs python and CA Root certificates                                  |
-| `ports`    | Installs the FreeBSD ports tree                                           |
-| `vmtools`  | Virtual Machine-specific utilities                                        |
-| `cleanup`  | Cleanup script                                                            |
+| Name         | Description                                                               |
+| ----         | -----------                                                               |
+| [`update`]   | Updates to the latest patch level (if applicable) and the latest packages |
+| [`vagrant`]  | Vagrant-related configuration                                             |
+| [`zeroconf`] | Enables zero-configuration networking                                     |
+| [`ansible`]  | Installs python and CA Root certificates                                  |
+| [`ports`]    | Installs the FreeBSD ports tree                                           |
+| [`vmtools`]  | Virtual Machine-specific utilities                                        |
+| [`cleanup`]  | Cleanup script                                                            |
 
 ### Handling `.iso` and `.box` files
 
@@ -176,3 +176,10 @@ end
 [Vagrant]: https://www.vagrantup.com/downloads.html
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
 [VMWare Fusion]: http://www.vmware.com/products/fusion/
+[`ansible`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/ansible.sh
+[`cleanup`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/cleanup.sh
+[`ports`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/ports.sh
+[`update`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/update.sh
+[`vagrant`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/vagrant.sh
+[`vmtools`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/vmtools.sh
+[`zeroconf`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/zeroconf.sh
