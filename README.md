@@ -119,10 +119,11 @@ the `.iso` image and save it to the `iso` directory.
 
 ### Sample `Vagrantbox` file
 
+
 ```ruby
 servers = [
-  { name: 'www.local', memory: 512 },
-  { name: 'db.local', memory: 1024 }
+  { name: 'www.local', cpus: 2, memory: 512 },
+  { name: 'db.local', cpus: 1, memory: 1024 }
 ]
 
 script = <<-SCRIPT
@@ -132,6 +133,8 @@ SCRIPT
 
 ansible_raw_arguments = []
 
+Vagrant.require_version '>= 1.9.0'
+
 Vagrant.configure(2) do |config|
   servers.each do |server|
     config.vm.define server[:name] do |box|
@@ -140,9 +143,9 @@ Vagrant.configure(2) do |config|
       box.vm.network :private_network, type: 'dhcp'
       box.vm.hostname = server[:name]
       box.vm.synced_folder '.', '/vagrant', type: 'nfs'
-      box.vm.provider :virtualbox do |vb|
-        vb.name = server[:name]
-        vb.customize ['modifyvm', :id, '--memory', server[:memory]]
+      box.vm.provider 'virtualbox' do |v|
+        v.linked_clone           = true
+        v.name, v.cpus, v.memory = server.values_at(:name, :cpus, :memory)
       end
 
       if server == servers.last
