@@ -138,10 +138,10 @@ Vagrant.require_version '>= 1.9.0'
 Vagrant.configure(2) do |config|
   servers.each do |server|
     config.vm.define server[:name] do |box|
-      box.vm.guest = :freebsd
-      box.vm.box = 'FreeBSD-11.0-RELEASE-amd64'
-      box.vm.network :private_network, type: 'dhcp'
+      box.vm.guest    = 'freebsd'
+      box.vm.box      = 'FreeBSD-11.0-RELEASE-amd64'
       box.vm.hostname = server[:name]
+      box.vm.network 'private_network', type: 'dhcp'
       box.vm.synced_folder '.', '/vagrant', type: 'nfs'
       box.vm.provider 'virtualbox' do |v|
         v.linked_clone           = true
