@@ -39,4 +39,8 @@ cat > /usr/local/etc/mDNSResponderServices.conf << END
 Vagrant
 _ssh._tcp.
 22
+
+Vagrant
+_sftp-ssh._tcp.
+22
 END
