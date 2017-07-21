@@ -10,7 +10,6 @@ else
 	GEOM=da0  # VMWare
 fi
 
-# TODO: This should be fixed in FreeBSD
 export ZFSBOOT_DISKS="$GEOM"
 export nonInteractive="YES"
 
