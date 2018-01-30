@@ -179,7 +179,7 @@ TODO
 
 - [ ] Fix rc.conf dir
 
-[official FreeBSD]: https://atlas.hashicorp.com/freebsd
+[official FreeBSD]: https://app.vagrantup.com/freebsd
 [Release Branches]: https://www.freebsd.org/doc/en/books/dev-model/release-branches.html
 [Packer]: https://www.packer.io/docs/installation.html
 [Vagrant]: https://www.vagrantup.com/downloads.html
