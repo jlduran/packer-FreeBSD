@@ -2,7 +2,6 @@
 
 # Install bash & sudo
 pkg install -y bash sudo
-echo 'fdescfs		/dev/fd		fdescfs	rw,late	0	0' >> /etc/fstab
 
 # Create the vagrant user with a password of vagrant
 pw groupadd vagrant -g 1001
