@@ -55,7 +55,7 @@ You can adjust the following variables in `variables.json`:
   "arch": "amd64",
   "guest_os_type": "FreeBSD_64",
   "filesystem": "ufs",
-  "mirror": "http://ftp.freebsd.org/pub/FreeBSD"
+  "mirror": "https://download.freebsd.org/ftp"
 }
 ```
 
@@ -95,7 +95,7 @@ You can adjust the following variables in `variables.json`:
     `ufs`
 
 -   `mirror` is the preferred FreeBSD mirror.  _Default:_
-    `http://ftp.freebsd.org/pub/FreeBSD`
+    `https://download.freebsd.org/ftp`
 
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:
