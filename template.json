@@ -8,7 +8,6 @@
         "scripts/vagrant.sh",
         "scripts/zeroconf.sh",
         "scripts/ansible.sh",
-        "scripts/ports.sh",
         "scripts/vmtools.sh",
         "scripts/cleanup.sh"
       ]

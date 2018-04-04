@@ -106,9 +106,15 @@ it runs the following provisioning scripts:
 | [`vagrant`]  | Vagrant-related configuration                                             |
 | [`zeroconf`] | Enables zero-configuration networking                                     |
 | [`ansible`]  | Installs python and CA Root certificates                                  |
-| [`ports`]    | Installs the FreeBSD ports tree                                           |
 | [`vmtools`]  | Virtual Machine-specific utilities                                        |
-| [`cleanup`]  | Cleanup script                                                            |
+| [`cleanup`]  | Cleanup script (should be called last)                                    |
+
+The following scripts are also available:
+
+| Name          | Description                      |
+| ----          | -----------                      |
+| [`hardening`] | Provides basic hardening options |
+| [`ports`]     | Installs the FreeBSD ports tree  |
 
 ### Handling `.iso` and `.box` files
 
@@ -187,6 +193,7 @@ TODO
 [VMWare Fusion]: http://www.vmware.com/products/fusion/
 [`ansible`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/ansible.sh
 [`cleanup`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/cleanup.sh
+[`hardening`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/hardening.sh
 [`ports`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/ports.sh
 [`update`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/update.sh
 [`vagrant`]: https://github.com/jlduran/packer-FreeBSD/blob/master/scripts/vagrant.sh
