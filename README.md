@@ -157,10 +157,11 @@ Vagrant.configure(2) do |config|
 
       if server == servers.last
         box.vm.provision 'ansible' do |ansible|
-          ansible.limit          = 'all'
-          ansible.playbook       = 'site.yml'
-          ansible.inventory_path = 'local'
-          ansible.raw_arguments  = ansible_raw_arguments
+          ansible.compatibility_mode = '2.0'
+          ansible.limit              = 'all'
+          ansible.playbook           = 'site.yml'
+          ansible.inventory_path     = 'local'
+          ansible.raw_arguments      = ansible_raw_arguments
         end
       else
         ansible_raw_arguments << private_key_path(server[:name])
