@@ -17,7 +17,7 @@
     {
       "type": "virtualbox-iso",
       "iso_urls": [
-        "file://./iso/FreeBSD-{{ user `release` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso",
+        "file://iso/FreeBSD-{{ user `release` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso",
         "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `release` }}/FreeBSD-{{ user `release` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso"
       ],
       "iso_checksum_url": "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `release` }}/CHECKSUM.SHA256-FreeBSD-{{ user `release` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}",
