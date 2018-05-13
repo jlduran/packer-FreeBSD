@@ -22,7 +22,7 @@
         "--product", "FreeBSD-{{user `version` }}{{ user `branch` }}-{{ user `arch` }}{{user `snapshot` }}",
         "--producturl", "https://www.freebsd.org",
         "--description", "FreeBSD is an operating system used to power modern servers, desktops, and embedded platforms.",
-        "--version", "{{user `version` }}{{ user `branch` }}-{{ user `arch` }}{{user `snapshot` }}"
+        "--version", "{{user `version` }}{{ user `branch` }}"
       ],
       "iso_urls": [
         "file://iso/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso",
