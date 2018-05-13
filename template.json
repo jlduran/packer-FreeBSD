@@ -16,6 +16,14 @@
   "builders": [
     {
       "type": "virtualbox-iso",
+      "export_opts": [
+        "--manifest",
+        "--vsys", "0",
+        "--product", "FreeBSD-{{user `version` }}{{ user `branch` }}-{{ user `arch` }}{{user `snapshot` }}",
+        "--producturl", "https://www.freebsd.org",
+        "--description", "FreeBSD is an operating system used to power modern servers, desktops, and embedded platforms.",
+        "--version", "{{user `version` }}{{ user `branch` }}-{{ user `arch` }}{{user `snapshot` }}"
+      ],
       "iso_urls": [
         "file://iso/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso",
         "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `version` }}/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso"
