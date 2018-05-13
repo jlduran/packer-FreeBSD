@@ -65,7 +65,7 @@
       "boot_command": [
         "<esc><wait>",
         "boot -s<enter>",
-        "<wait10><wait5>",
+        "<wait15s>",
         "/bin/sh<enter><wait>",
         "mdmfs -s 100m md1 /tmp<enter><wait>",
         "dhclient -l /tmp/dhclient.lease.vtnet0 vtnet0<enter><wait5>",
