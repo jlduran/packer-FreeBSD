@@ -34,7 +34,7 @@ To create a box:
 
 4.  Add it to the list of Vagrant boxes:
 
-        $ vagrant box add builds/FreeBSD-11.1-RELEASE-amd64.box --name FreeBSD-11.1-RELEASE-amd64
+        $ vagrant box add builds/FreeBSD-11.2-RELEASE-amd64.box --name FreeBSD-11.2-RELEASE-amd64
 
 ------------------------------------------------------------------------
 
@@ -47,7 +47,7 @@ You can adjust the following variables in `variables.json`:
   "cpus": "1",
   "disk_size": "10240",
   "memory": "512",
-  "release": "11.1",
+  "version": "11.2",
   "branch": "-RELEASE",
   "snapshot": "",
   "revision": "",
@@ -65,7 +65,7 @@ You can adjust the following variables in `variables.json`:
 
 -   `memory` is the amount of RAM assigned.  _Default:_ `512`
 
--   `release` is the FreeBSD version number.  _Default:_ `11.1`
+-   `version` is the FreeBSD version number.  _Default:_ `11.2`
 
 -   `branch` used in conjunction with `snapshot`, `revision` and
     `directory`.  _Default:_ `-RELEASE`
@@ -146,7 +146,7 @@ Vagrant.configure(2) do |config|
   servers.each do |server|
     config.vm.define server[:name] do |box|
       box.vm.guest    = 'freebsd'
-      box.vm.box      = 'FreeBSD-11.1-RELEASE-amd64'
+      box.vm.box      = 'FreeBSD-11.2-RELEASE-amd64'
       box.vm.hostname = server[:name]
       box.vm.network 'private_network', type: 'dhcp'
       box.vm.synced_folder '.', '/vagrant', type: 'nfs'
