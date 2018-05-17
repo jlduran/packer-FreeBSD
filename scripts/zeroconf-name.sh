@@ -1,6 +1,8 @@
 #!/bin/sh -e
 
-RC_CONF_DIR=/usr/local/etc/rc.conf.d
+MDNSD_RC_CONF_FILE=/usr/local/etc/rc.conf.d/mdnsd
+MDNSRESPONDERPOSIX_RC_CONF_FILE=/usr/local/etc/rc.conf.d/mdnsresponderposix
+mkdir -p /usr/local/etc/rc.conf.d
 
 # Install mDNSResponder and mDNSResponder_nss
 pkg install -y mDNSResponder_nss
@@ -9,10 +11,9 @@ pkg install -y mDNSResponder_nss
 sed -i '' -e 's/^hosts: files dns/hosts: files mdns dns/' /etc/nsswitch.conf
 
 # mDNSResponder configuration
-mkdir -p "$RC_CONF_DIR"
-sysrc -f "$RC_CONF_DIR"/mdnsd mdnsd_enable=YES
-sysrc -f "$RC_CONF_DIR"/mdnsresponderposix mdnsresponderposix_enable=YES
-sysrc -f "$RC_CONF_DIR"/mdnsresponderposix \
+sysrc -f "$MDNSD_RC_CONF_FILE" mdnsd_enable=YES
+sysrc -f "$MDNSRESPONDERPOSIX_RC_CONF_FILE" mdnsresponderposix_enable=YES
+sysrc -f "$MDNSRESPONDERPOSIX_RC_CONF_FILE" \
 	mdnsresponderposix_flags='-f /usr/local/etc/mDNSResponderServices.conf'
 
 cat > /usr/local/etc/mDNSResponderServices.conf << END

@@ -1,6 +1,7 @@
 #!/bin/sh -e
 
-RC_CONF_DIR=/etc/rc.conf.d
+RPCBIND_RC_CONF_FILE=/etc/rc.conf.d/rpcbind
+NFSD_RC_CONF_FILE=/etc/rc.conf.d/nfsd
 
 # Install bash & sudo
 pkg install -y bash sudo
@@ -31,8 +32,8 @@ chmod 0600 /home/vagrant/.ssh/authorized_keys
 
 # Synced folders
 pkg install -y rsync
-sysrc -f "$RC_CONF_DIR"/rpcbind rpcbind_enable=YES
-sysrc -f "$RC_CONF_DIR"/nfsd nfs_server_enable=YES
+sysrc -f "$RPCBIND_RC_CONF_FILE" rpcbind_enable=YES
+sysrc -f "$NFSD_RC_CONF_FILE" nfs_server_enable=YES
 touch /etc/exports
 
 # Set the build time
