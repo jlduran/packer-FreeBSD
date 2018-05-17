@@ -14,9 +14,10 @@ echo 'vagrant ALL=(ALL) NOPASSWD: ALL' > /usr/local/etc/sudoers.d/vagrant
 chmod 0440 /usr/local/etc/sudoers.d/vagrant
 
 # Configure passwordless su to wheel users
-sed -i '' '/pam_group.so/ a\
-auth		sufficient	pam_group.so		trust use_uid ruser
-' /etc/pam.d/su
+sed -i '' -e \
+	'/pam_group.so/ a\
+auth		sufficient	pam_group.so		trust use_uid ruser' \
+	/etc/pam.d/su
 
 # Configure the vagrant ssh key
 mkdir /home/vagrant/.ssh

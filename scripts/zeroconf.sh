@@ -1,19 +1,33 @@
 #!/bin/sh -e
 
-RC_CONF_DIR=/usr/local/etc/rc.conf.d
+if [ "$1" = "name" ]; then
+	RC_CONF_DIR=/usr/local/etc/rc.conf.d
+elif [ "$1" = "local" ]; then
+	RC_CONF_FILE=/etc/rc.conf.local
+else
+	RC_CONF_FILE=/etc/rc.conf
+fi
 
 # Install mDNSResponder and mDNSResponder_nss
 pkg install -y mDNSResponder_nss
 
 # Modify the Name Server Switch configuration file
-sed -i '' 's/hosts: files dns/hosts: files mdns dns/g' /etc/nsswitch.conf
+sed -i '' -e 's/^hosts: files dns/hosts: files mdns dns/g' /etc/nsswitch.conf
 
 # mDNSResponder configuration
-mkdir -p "$RC_CONF_DIR"
-sysrc -f "$RC_CONF_DIR"/mdnsd mdnsd_enable=YES
-sysrc -f "$RC_CONF_DIR"/mdnsresponderposix mdnsresponderposix_enable=YES
-sysrc -f "$RC_CONF_DIR"/mdnsresponderposix \
-	mdnsresponderposix_flags='-f /usr/local/etc/mDNSResponderServices.conf'
+if [ ! -z "$RC_CONF_DIR" ]; then
+	mkdir -p "$RC_CONF_DIR"
+	sysrc -f "$RC_CONF_DIR"/mdnsd mdnsd_enable=YES
+	sysrc -f "$RC_CONF_DIR"/mdnsresponderposix mdnsresponderposix_enable=YES
+	sysrc -f "$RC_CONF_DIR"/mdnsresponderposix \
+		mdnsresponderposix_flags='-f /usr/local/etc/mDNSResponderServices.conf'
+else
+	sysrc -f "$RC_CONF_FILE" mdnsd_enable=YES
+	sysrc -f "$RC_CONF_FILE" mdnsresponderposix_enable=YES
+	sysrc -f "$RC_CONF_FILE" \
+		mdnsresponderposix_flags='-f /usr/local/etc/mDNSResponderServices.conf'
+fi
+
 cat > /usr/local/etc/mDNSResponderServices.conf << END
 #
 # Services file parsed by mDNSResponderPosix.

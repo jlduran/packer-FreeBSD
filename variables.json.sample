@@ -10,5 +10,6 @@
   "arch": "amd64",
   "guest_os_type": "FreeBSD_64",
   "filesystem": "ufs",
-  "mirror": "https://download.freebsd.org/ftp"
+  "mirror": "https://download.freebsd.org/ftp",
+  "rc_conf_file": ""
 }

@@ -25,8 +25,10 @@ To create a box:
         $ git clone https://github.com/jlduran/packer-FreeBSD.git
         $ cd packer-FreeBSD
 
-2.  _(Optional)_ Adjust variables.  See [Build Options](#build-options)
+2.  Create the `variables.json` file.  See [BuildOptions](#build-options)
     for more information.
+
+        $ cp variables.json.sample variables.json
 
 3.  Build the box:
 
@@ -55,7 +57,8 @@ You can adjust the following variables in `variables.json`:
   "arch": "amd64",
   "guest_os_type": "FreeBSD_64",
   "filesystem": "ufs",
-  "mirror": "https://download.freebsd.org/ftp"
+  "mirror": "https://download.freebsd.org/ftp",
+  "rc_conf_file": ""
 }
 ```
 
@@ -96,6 +99,15 @@ You can adjust the following variables in `variables.json`:
 
 -   `mirror` is the preferred FreeBSD mirror.  _Default:_
     `https://download.freebsd.org/ftp`
+
+-   `rc_conf_file` is the file where `rc.conf` parameters are stored.
+    _Default: <empty>_ .  Possible values are:
+
+    | Value     | File                                          |
+    | -----     | ----                                          |
+    | _<empty>_ | `/etc/rc.conf`                                |
+    | `local`   | `/etc/rc.conf.local` (Its use is discouraged) |
+    | `name`    | `<dir>/rc.conf.d/<name>`                      |
 
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:

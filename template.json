@@ -6,7 +6,7 @@
       "scripts": [
         "scripts/update.sh",
         "scripts/vagrant.sh",
-        "scripts/zeroconf.sh",
+        "scripts/zeroconf.sh {{ user `rc_conf_dir` }}",
         "scripts/ansible.sh",
         "scripts/vmtools.sh",
         "scripts/cleanup.sh"
@@ -19,10 +19,10 @@
       "export_opts": [
         "--manifest",
         "--vsys", "0",
-        "--product", "FreeBSD-{{user `version` }}{{ user `branch` }}-{{ user `arch` }}{{user `snapshot` }}",
+        "--product", "FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}",
         "--producturl", "https://www.freebsd.org",
         "--description", "FreeBSD is an operating system used to power modern servers, desktops, and embedded platforms.",
-        "--version", "{{user `version` }}{{ user `branch` }}"
+        "--version", "{{ user `version` }}{{ user `branch` }}"
       ],
       "iso_urls": [
         "file://iso/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso",

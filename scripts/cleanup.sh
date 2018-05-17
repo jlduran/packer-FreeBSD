@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # Disable root logins
-sed -i '' 's/PermitRootLogin yes/#PermitRootLogin no/g' /etc/ssh/sshd_config
+sed -i '' -e 's/^PermitRootLogin yes/#PermitRootLogin no/' /etc/ssh/sshd_config
 
 # Purge files we no longer need
 rm -f /root/*.iso

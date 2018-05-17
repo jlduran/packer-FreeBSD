@@ -26,9 +26,9 @@ echo 'ifconfig_DEFAULT="SYNCDHCP"' >> /etc/rc.conf
 # Enable sshd by default
 echo 'sshd_enable="YES"' >> /etc/rc.conf
 # Disable DNS lookups by default to make SSH connect quickly
-sed -i '' 's/#UseDNS yes/UseDNS no/g' /etc/ssh/sshd_config
+sed -i '' -e 's/^#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
 # Allow root logins during build.  Deactivated upon cleanup
-sed -i '' 's/#PermitRootLogin no/PermitRootLogin yes/g' /etc/ssh/sshd_config
+sed -i '' -e 's/^#PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # Disable sendmail
 echo 'sendmail_enable="NONE"' >> /etc/rc.conf
