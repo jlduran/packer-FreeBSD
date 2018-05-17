@@ -1,10 +1,6 @@
 #!/bin/sh -e
 
-if [ "$1" = "name" ]; then
-	RC_CONF_DIR=/usr/local/etc/rc.conf.d
-elif [ "$1" = "local" ]; then
-	RC_CONF_FILE=/etc/rc.conf.local
-else
+if [ -z "$RC_CONF_FILE" ] && [ -z "$RC_CONF_DIR" ]; then
 	RC_CONF_FILE=/etc/rc.conf
 fi
 
@@ -12,7 +8,7 @@ fi
 pkg install -y mDNSResponder_nss
 
 # Modify the Name Server Switch configuration file
-sed -i '' -e 's/^hosts: files dns/hosts: files mdns dns/g' /etc/nsswitch.conf
+sed -i '' -e 's/^hosts: files dns/hosts: files mdns dns/' /etc/nsswitch.conf
 
 # mDNSResponder configuration
 if [ ! -z "$RC_CONF_DIR" ]; then
