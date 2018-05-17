@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-RC_CONF_FILE=/etc/rc.conf
+RC_CONF_FILE=/etc/rc.conf.local
 
 case "$PACKER_BUILDER_TYPE" in
 

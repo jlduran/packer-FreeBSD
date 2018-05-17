@@ -1,16 +1,17 @@
 #!/bin/sh -e
 
-RC_CONF_FILE=/etc/rc.conf
+RC_CONF_DIR=/usr/local/etc/rc.conf.d
 
 case "$PACKER_BUILDER_TYPE" in
 
 	virtualbox-iso|virtualbox-ovf)
 		pkg install -y virtualbox-ose-additions-nox11
 
-		sysrc -f "$RC_CONF_FILE" dbus_enable=YES
-		sysrc -f "$RC_CONF_FILE" vboxguest_enable=YES
-		sysrc -f "$RC_CONF_FILE" vboxnet_enable=YES
-		sysrc -f "$RC_CONF_FILE" vboxservice_enable=YES
+		mkdir -p "$RC_CONF_DIR"
+		sysrc -f "$RC_CONF_DIR"/dbus dbus_enable=YES
+		sysrc -f "$RC_CONF_DIR"/vboxguest vboxguest_enable=YES
+		sysrc -f "$RC_CONF_DIR"/vboxnet vboxnet_enable=YES
+		sysrc -f "$RC_CONF_DIR"/vboxservice vboxservice_enable=YES
 
 		cat >> /boot/loader.conf <<- END
 		#VIRTUALBOX-BEGIN
@@ -25,7 +26,7 @@ case "$PACKER_BUILDER_TYPE" in
 	vmware-iso|vmware-vmx)
 		pkg install -y open-vm-tools-nox11
 
-		cat >> "$RC_CONF_FILE" <<- END
+		cat >> "$RC_CONF_DIR"/vmware_guestd <<- END
 		vmware_guest_vmblock_enable="YES"
 		vmware_guest_vmmemctl_enable="YES"
 		vmware_guest_vmxnet_enable="YES"

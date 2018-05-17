@@ -101,11 +101,11 @@ You can adjust the following variables in `variables.json`:
     `https://download.freebsd.org/ftp`
 
 -   `rc_conf_file` is the file where `rc.conf` parameters are stored.
-    _Default: <empty>_ .  Possible values are:
+    _Default: empty_ .  Possible values are:
 
     | Value     | File                                          |
     | -----     | ----                                          |
-    | _<empty>_ | `/etc/rc.conf`                                |
+    |           | `/etc/rc.conf`                                |
     | `-local`  | `/etc/rc.conf.local` (Its use is discouraged) |
     | `-name`   | `<dir>/rc.conf.d/<name>`                      |
 
