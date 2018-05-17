@@ -1,6 +1,12 @@
 #!/bin/sh -e
 
-if [ -z "$RC_CONF_FILE" ] && [ -z "$RC_CONF_DIR" ]; then
+PREFIX=$(echo "$0" | cut -f 2 -d -)
+
+if ["$PREFIX" = "local"]; then
+	RC_CONF_FILE=/etc/rc.conf.local
+if ["$PREFIX" = "name"]; then
+	RC_CONF_DIR=/usr/local/etc/rc.conf.d
+else
 	RC_CONF_FILE=/etc/rc.conf
 fi
 

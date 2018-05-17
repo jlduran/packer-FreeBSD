@@ -69,7 +69,7 @@
         "/bin/sh<enter><wait>",
         "mdmfs -s 100m md1 /tmp<enter><wait>",
         "dhclient -l /tmp/dhclient.lease.vtnet0 vtnet0<enter><wait5>",
-        "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig_{{ user `filesystem` }}<enter><wait5>",
+        "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig-{{ user `filesystem` }}<enter><wait5>",
         "bsdinstall script /tmp/installerconfig<enter>"
       ]
     }
