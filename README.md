@@ -103,11 +103,11 @@ You can adjust the following variables in `variables.json`:
 -   `rc_conf_file` is the file where `rc.conf` parameters are stored.
     _Default: empty_ .  Possible values are:
 
-    | Value     | File                                          |
-    | -----     | ----                                          |
-    |           | `/etc/rc.conf`                                |
-    | `-local`  | `/etc/rc.conf.local` (Its use is discouraged) |
-    | `-name`   | `<dir>/rc.conf.d/<name>`                      |
+    | Value    | File                                          |
+    | -----    | ----                                          |
+    |          | `/etc/rc.conf`                                |
+    | `local`  | `/etc/rc.conf.local` (Its use is discouraged) |
+    | `name`   | `<dir>/rc.conf.d/<name>`                      |
 
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:

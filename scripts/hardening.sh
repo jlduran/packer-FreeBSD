@@ -1,8 +1,18 @@
 #!/bin/sh -e
 
-IPFW_RC_CONF_FILE=/etc/rc.conf
-BLACKLISTD_RC_CONF_FILE=/etc/rc.conf
-SSHD_RC_CONF_FILE=/etc/rc.conf
+if [ -e /tmp/rc-local ]; then
+	IPFW_RC_CONF_FILE=/etc/rc.conf.local
+	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.local
+	SSHD_RC_CONF_FILE=/etc/rc.conf.local
+elif [ -e /tmp/rc-name ]; then
+	IPFW_RC_CONF_FILE=/etc/rc.conf.d/ipfw
+	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.d/blacklistd
+	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
+else
+	IPFW_RC_CONF_FILE=/etc/rc.conf
+	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf
+	SSHD_RC_CONF_FILE=/etc/rc.conf
+fi
 
 # Disable weak SSH keys
 sysrc -f "$SSHD_RC_CONF_FILE" sshd_ecdsa_enable=NO

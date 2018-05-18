@@ -1,10 +1,25 @@
 #!/bin/sh -e
 
-DBUS_RC_CONF_FILE=/etc/rc.conf
-VBOXGUEST_RC_CONF_FILE=/etc/rc.conf
-VBOXNET_RC_CONF_FILE=/etc/rc.conf
-VBOXSERVICE_RC_CONF_FILE=/etc/rc.conf
-VMWARE_GUESTD_RC_CONF_FILE=/etc/rc.conf
+if [ -e /tmp/rc-local ]; then
+	DBUS_RC_CONF_FILE=/etc/rc.conf.local
+	VBOXGUEST_RC_CONF_FILE=/etc/rc.conf.local
+	VBOXNET_RC_CONF_FILE=/etc/rc.conf.local
+	VBOXSERVICE_RC_CONF_FILE=/etc/rc.conf.local
+	VMWARE_GUESTD_RC_CONF_FILE=/etc/rc.conf.local
+elif [ -e /tmp/rc-name ]; then
+	DBUS_RC_CONF_FILE=/usr/local/etc/rc.conf.d/dbus
+	VBOXGUEST_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vboxguest
+	VBOXNET_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vboxnet
+	VBOXSERVICE_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vboxservice
+	VMWARE_GUESTD_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vmware_guestd
+	mkdir -p /usr/local/etc/rc.conf.d
+else
+	DBUS_RC_CONF_FILE=/etc/rc.conf
+	VBOXGUEST_RC_CONF_FILE=/etc/rc.conf
+	VBOXNET_RC_CONF_FILE=/etc/rc.conf
+	VBOXSERVICE_RC_CONF_FILE=/etc/rc.conf
+	VMWARE_GUESTD_RC_CONF_FILE=/etc/rc.conf
+fi
 
 case "$PACKER_BUILDER_TYPE" in
 

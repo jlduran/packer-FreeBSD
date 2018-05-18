@@ -1,7 +1,15 @@
 #!/bin/sh -e
 
-RPCBIND_RC_CONF_FILE=/etc/rc.conf
-NFSD_RC_CONF_FILE=/etc/rc.conf
+if [ -e /tmp/rc-local ]; then
+	RPCBIND_RC_CONF_FILE=/etc/rc.conf.local
+	NFSD_RC_CONF_FILE=/etc/rc.conf.local
+elif [ -e /tmp/rc-name ]; then
+	RPCBIND_RC_CONF_FILE=/etc/rc.conf.d/rpcbind
+	NFSD_RC_CONF_FILE=/etc/rc.conf.d/nfsd
+else
+	RPCBIND_RC_CONF_FILE=/etc/rc.conf
+	NFSD_RC_CONF_FILE=/etc/rc.conf
+fi
 
 # Install bash & sudo
 pkg install -y bash sudo
@@ -17,8 +25,7 @@ echo 'vagrant ALL=(ALL) NOPASSWD: ALL' > /usr/local/etc/sudoers.d/vagrant
 chmod 0440 /usr/local/etc/sudoers.d/vagrant
 
 # Configure passwordless su to wheel users
-sed -i '' -e \
-	'/pam_group.so/ a\
+sed -i '' -e '/pam_group.so/ a\
 auth		sufficient	pam_group.so		trust use_uid ruser' \
 	/etc/pam.d/su
 

@@ -1,7 +1,16 @@
 #!/bin/sh -e
 
-MDNSD_RC_CONF_FILE=/etc/rc.conf
-MDNSRESPONDERPOSIX_RC_CONF_FILE=/etc/rc.conf
+if [ -e /tmp/rc-local ]; then
+	MDNSD_RC_CONF_FILE=/etc/rc.conf.local
+	MDNSRESPONDERPOSIX_RC_CONF_FILE=/etc/rc.conf.local
+elif [ -e /tmp/rc-name ]; then
+	MDNSD_RC_CONF_FILE=/usr/local/etc/rc.conf.d/mdnsd
+	MDNSRESPONDERPOSIX_RC_CONF_FILE=/usr/local/etc/rc.conf.d/mdnsresponderposix
+	mkdir -p /usr/local/etc/rc.conf.d
+else
+	MDNSD_RC_CONF_FILE=/etc/rc.conf
+	MDNSRESPONDERPOSIX_RC_CONF_FILE=/etc/rc.conf
+fi
 
 # Install mDNSResponder and mDNSResponder_nss
 pkg install -y mDNSResponder_nss
