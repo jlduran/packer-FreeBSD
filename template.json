@@ -70,7 +70,8 @@
         "mdmfs -s 100m md1 /tmp<enter><wait>",
         "dhclient -l /tmp/dhclient.lease.vtnet0 vtnet0<enter><wait5>",
         "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig-{{ user `filesystem` }}<enter><wait5>",
-        "touch /tmp/rc-{{ user `rc_conf_dir` }}<enter>",
+        "RC_CONF_FILE={{ user `rc_conf_file` }}<enter>",
+        "export RC_CONF_FILE<enter>",
         "bsdinstall script /tmp/installerconfig<enter>"
       ]
     }

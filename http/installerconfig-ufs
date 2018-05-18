@@ -14,6 +14,13 @@ PARTITIONS="$GEOM"
 
 #!/bin/sh -e
 
+# Setup rc.conf location sentinel
+if [ "$RC_CONF_FILE" = 'local' ]; then
+	touch /tmp/rc-local
+elif [ "$RC_CONF_FILE" = 'name' ]; then
+	touch /tmp/rc-name
+fi
+
 # Disable X11
 echo 'OPTIONS_UNSET+=X11' >> /etc/make.conf
 
