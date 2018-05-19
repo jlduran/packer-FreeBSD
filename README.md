@@ -25,8 +25,8 @@ To create a box:
         $ git clone https://github.com/jlduran/packer-FreeBSD.git
         $ cd packer-FreeBSD
 
-2.  Create the `variables.json` file.  See [BuildOptions](#build-options)
-    for more information.
+2.  Create the `variables.json` file.  See
+    [Build Options](#build-options) for more information.
 
         $ cp variables.json.sample variables.json
 
@@ -34,7 +34,9 @@ To create a box:
 
         $ packer build -var-file=variables.json template.json
 
-4.  Add it to the list of Vagrant boxes:
+4.  Add it to the list of Vagrant boxes.  See
+    [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
+    more information.
 
         $ vagrant box add builds/FreeBSD-11.2-RELEASE-amd64.box --name FreeBSD-11.2-RELEASE-amd64
 
@@ -99,7 +101,7 @@ end
 
 ### Build Options
 
-You can adjust the following variables in `variables.json`:
+Below is a sample `variables.json` file:
 
 ```json
 {
@@ -113,11 +115,13 @@ You can adjust the following variables in `variables.json`:
   "directory": "releases",
   "arch": "amd64",
   "guest_os_type": "FreeBSD_64",
-  "filesystem": "ufs",
+  "filesystem": "zfs",
   "mirror": "https://download.freebsd.org/ftp",
   "rc_conf_file": ""
 }
 ```
+
+The following variables can be set:
 
 -   `cpus` is the number of CPUs assigned.  _Default:_ `1`
 
@@ -152,7 +156,7 @@ You can adjust the following variables in `variables.json`:
     _Default:_ `FreeBSD_64`
 
 -   `filesystem` is the file system type (`ufs` or `zfs`).  _Default:_
-    `ufs`
+    `zfs`
 
 -   `mirror` is the preferred FreeBSD mirror.  _Default:_
     `https://download.freebsd.org/ftp`
@@ -176,7 +180,7 @@ it runs the following provisioning scripts:
 | [`zeroconf`] | Enables zero-configuration networking                                     |
 | [`ansible`]  | Installs python and CA Root certificates                                  |
 | [`vmtools`]  | Virtual Machine-specific utilities                                        |
-| [`cleanup`]  | Cleanup script (should be called last)                                    |
+| [`cleanup`]  | Cleanup script (must be called last)                                      |
 
 The following scripts are also available:
 

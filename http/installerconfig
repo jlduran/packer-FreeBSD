@@ -10,35 +10,47 @@ else
 	GEOM=da0  # VMWare
 fi
 
-PARTITIONS="$GEOM"
+if [ "$FILESYSTEM" = 'ufs' ]; then
+	PARTITIONS="$GEOM"
+else
+	export ZFSBOOT_DISKS="$GEOM"
+	export nonInteractive="YES"
+fi
 
 #!/bin/sh -e
 
 # Setup rc.conf location sentinel
 if [ "$RC_CONF_FILE" = 'local' ]; then
 	touch /tmp/rc-local
+	SSHD_RC_CONF_FILE=/etc/rc.conf.local
+	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.local
 elif [ "$RC_CONF_FILE" = 'name' ]; then
 	touch /tmp/rc-name
+	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
+	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.d/sendmail
+else
+	SSHD_RC_CONF_FILE=/etc/rc.conf
+	SENDMAIL_RC_CONF_FILE=/etc/rc.conf
 fi
 
 # Disable X11
 echo 'OPTIONS_UNSET+=X11' >> /etc/make.conf
 
 # Basic network options
-echo 'hostname="localhost"' >> /etc/rc.conf
+sysrc hostname=localhost
 
 # Use DHCP to get the network configuration
-echo 'ifconfig_DEFAULT="SYNCDHCP"' >> /etc/rc.conf
+sysrc ifconfig_DEFAULT=SYNCDHCP
 
 # Enable sshd by default
-echo 'sshd_enable="YES"' >> /etc/rc.conf
+sysrc -f "$SSHD_RC_CONF_FILE" sshd_enable=YES
 # Disable DNS lookups by default to make SSH connect quickly
 sed -i '' -e 's/^#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
 # Allow root logins during build.  Deactivated upon cleanup
 sed -i '' -e 's/^#PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 # Disable sendmail
-echo 'sendmail_enable="NONE"' >> /etc/rc.conf
+sysrc -f "$SENDMAIL_RC_CONF_FILE" sendmail_enable=NONE
 
 # Change root's password to vagrant
 echo 'vagrant' | pw usermod root -h 0
@@ -51,7 +63,7 @@ echo 'vagrant' | pw usermod root -h 0
 } >> /etc/sysctl.conf
 
 # The console is not interactive, so we might as well boot quickly
-echo 'autoboot_delay="-1"' >> /boot/loader.conf
+sysrc -f /boot/loader.conf autoboot_delay=-1
 
 # Reboot
 reboot

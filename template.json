@@ -67,9 +67,11 @@
         "boot -s<enter>",
         "<wait15s>",
         "/bin/sh<enter><wait>",
-        "mdmfs -s 100m md1 /tmp<enter><wait>",
+        "mdmfs -s 100m md /tmp<enter><wait>",
         "dhclient -l /tmp/dhclient.lease.vtnet0 vtnet0<enter><wait5>",
         "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig-{{ user `filesystem` }}<enter><wait5>",
+        "FILESYSTEM={{ user `filesystem` }}<enter>",
+        "export FILESYSTEM<enter>",
         "RC_CONF_FILE={{ user `rc_conf_file` }}<enter>",
         "export RC_CONF_FILE<enter>",
         "bsdinstall script /tmp/installerconfig<enter>"
@@ -80,7 +82,7 @@
     [{
       "type": "vagrant",
       "vagrantfile_template": "vagrantfile.tpl",
-      "output": "./builds/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}.box"
+      "output": "builds/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}.box"
     }]
   ]
 }
