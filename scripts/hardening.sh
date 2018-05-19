@@ -16,7 +16,7 @@ fi
 
 # Disable weak SSH keys
 sysrc -f "$SSHD_RC_CONF_FILE" sshd_ecdsa_enable=NO
-rf -f /etc/ssh/ssh_host_ecdsa_key*
+rm -f /etc/ssh/ssh_host_ecdsa_key*
 
 # Setup firewall
 sysrc -f "$IPFW_RC_CONF_FILE" firewall_enable=YES
@@ -35,23 +35,29 @@ sed -i '' -e 's/^#UseBlacklist no/UseBlacklist yes/' /etc/ssh/sshd_config
 sed -i '' -e 's/ftpd -l$/ftpd -B -l/' /etc/inetd.conf
 
 # Configure SSH server
-sed -i '' -e 's/^#LogLevel INFO/LogLevel VERBOSE/' /etc/ssh/sshd_config
-sed -i '' -e 's/^#MaxAuthTries 6/MaxAuthTries 2/' /etc/ssh/sshd_config
-sed -i '' -e 's/^#MaxSessions 10/MaxSessions 2/' /etc/ssh/sshd_config
-sed -i '' -e \
-	's/^#ChallengeResponseAuthentication yes/ChallengeResponseAuthentication no/' \
-	/etc/ssh/sshd_config
-sed -i '' -e 's/^#UsePAM yes/UsePAM no/' /etc/ssh/sshd_config
 sed -i '' -e 's/^#AllowAgentForwarding yes/AllowAgentForwarding no/' \
 	/etc/ssh/sshd_config
 sed -i '' -e 's/^#AllowTcpForwarding yes/AllowTcpForwarding no/' \
 	/etc/ssh/sshd_config
-sed -i '' -e 's/^#X11Forwarding yes/X11Forwarding no/' /etc/ssh/sshd_config
-sed -i '' -e 's/^#TCPKeepAlive yes/TCPKeepAlive no/' /etc/ssh/sshd_config
-sed -i '' -e 's/^#Compression delayed/Compression no/' /etc/ssh/sshd_config
+sed -i '' -e 's/^#Compression delayed/Compression no/' \
+	/etc/ssh/sshd_config
 sed -i '' -e 's/^#ClientAliveCountMax 3/ClientAliveCountMax 2/' \
 	/etc/ssh/sshd_config
+sed -i '' -e 's/^#LogLevel INFO/LogLevel VERBOSE/' \
+	/etc/ssh/sshd_config
+sed -i '' -e 's/^#MaxAuthTries 6/MaxAuthTries 2/' \
+	/etc/ssh/sshd_config
+sed -i '' -e 's/^#MaxSessions 10/MaxSessions 2/' \
+	/etc/ssh/sshd_config
+sed -i '' -e 's/^#ChallengeResponseAuthentication yes/ChallengeResponseAuthentication no/' \
+	/etc/ssh/sshd_config
+sed -i '' -e 's/^#UsePAM yes/UsePAM no/' \
+	/etc/ssh/sshd_config
+sed -i '' -e 's/^#TCPKeepAlive yes/TCPKeepAlive no/' \
+	/etc/ssh/sshd_config
 sed -i '' -e 's/^#VersionAddendum .*$/VersionAddendum none/' \
+	/etc/ssh/sshd_config
+sed -i '' -e 's/^#X11Forwarding yes/X11Forwarding no/' \
 	/etc/ssh/sshd_config
 
 # Change sysctl default values
