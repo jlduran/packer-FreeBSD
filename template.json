@@ -19,16 +19,16 @@
       "export_opts": [
         "--manifest",
         "--vsys", "0",
-        "--product", "FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}",
+        "--product", "FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}",
         "--producturl", "https://www.freebsd.org",
         "--description", "FreeBSD is an operating system used to power modern servers, desktops, and embedded platforms.",
-        "--version", "{{ user `version` }}{{ user `branch` }}"
+        "--version", "{{ user `revision` }}{{ user `branch` }}"
       ],
       "iso_urls": [
-        "file://iso/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso",
-        "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `version` }}/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}-disc1.iso"
+        "file://iso/FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `svn_revision` }}-disc1.iso",
+        "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `revision` }}/FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `svn_revision` }}-disc1.iso"
       ],
-      "iso_checksum_url": "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `version` }}/CHECKSUM.SHA256-FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}",
+      "iso_checksum_url": "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `revision` }}/CHECKSUM.SHA256-FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `svn_revision` }}",
       "iso_checksum_type": "sha256",
       "ssh_username": "root",
       "ssh_password": "vagrant",
@@ -80,7 +80,7 @@
     [{
       "type": "vagrant",
       "vagrantfile_template": "vagrantfile.tpl",
-      "output": "builds/FreeBSD-{{ user `version` }}{{ user `branch` }}-{{ user `arch` }}{{ user `snapshot` }}{{ user `revision` }}.box"
+      "output": "builds/FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `svn_revision` }}.box"
     }]
   ]
 }

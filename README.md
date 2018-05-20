@@ -108,10 +108,10 @@ Below is a sample `variables.json` file:
   "cpus": "1",
   "disk_size": "10240",
   "memory": "512",
-  "version": "11.2",
+  "revision": "11.2",
   "branch": "-RELEASE",
-  "snapshot": "",
-  "revision": "",
+  "build_date": "",
+  "svn_revision": "",
   "directory": "releases",
   "arch": "amd64",
   "guest_os_type": "FreeBSD_64",
@@ -129,9 +129,9 @@ The following variables can be set:
 
 -   `memory` is the amount of RAM assigned.  _Default:_ `512`
 
--   `version` is the FreeBSD version number.  _Default:_ `11.2`
+-   `revision` is the FreeBSD revision number.  _Default:_ `11.2`
 
--   `branch` used in conjunction with `snapshot`, `revision` and
+-   `branch` used in conjunction with `build_date`, `svn_revision` and
     `directory`.  _Default:_ `-RELEASE`
 
     See FreeBSD's [Release Branches] for more information.  Possible
