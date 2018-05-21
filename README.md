@@ -125,9 +125,10 @@ The following variables can be set:
 
 -   `cpus` is the number of CPUs assigned.  _Default:_ `1`
 
--   `disk_size` is the HDD size.  _Default:_ `10240`
+-   `disk_size` is the HDD size in megabytes.  _Default:_ `10240`
 
--   `memory` is the amount of RAM assigned.  _Default:_ `512`
+-   `memory` is the amount of RAM in megabytes assigned.  _Default:_
+    `512`
 
 -   `revision` is the FreeBSD revision number.  _Default:_ `11.2`
 
