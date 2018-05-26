@@ -37,10 +37,8 @@ fetch -am --no-verify-peer -o /home/vagrant/.ssh/authorized_keys \
 chown -R 1001 /home/vagrant/.ssh
 chmod 0600 /home/vagrant/.ssh/authorized_keys
 
-# Synced folders
-sysrc -f "$RPCBIND_RC_CONF_FILE" rpcbind_enable=YES
-sysrc -f "$NFSD_RC_CONF_FILE" nfs_server_enable=YES
-touch /etc/exports
+# NFS synced folders
+sysrc -f "$NFSD_RC_CONF_FILE" nfs_client_enable=YES
 
 # Set the build time
 date > /etc/vagrant_box_build_time
