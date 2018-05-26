@@ -56,15 +56,11 @@ SCRIPT
 
 ansible_raw_arguments = []
 
-Vagrant.require_version '>= 1.9.0'
-
 Vagrant.configure(2) do |config|
   servers.each do |server|
     config.vm.define server[:name] do |box|
-      box.vm.guest    = 'freebsd'
       box.vm.box      = 'FreeBSD-11.2-RELEASE-amd64'
       box.vm.hostname = server[:name]
-      box.vm.network 'private_network', type: 'dhcp'
       box.vm.provider 'virtualbox' do |v|
         v.linked_clone           = true
         v.name, v.cpus, v.memory = server.values_at(:name, :cpus, :memory)
