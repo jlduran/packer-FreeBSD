@@ -65,7 +65,6 @@ Vagrant.configure(2) do |config|
       box.vm.box      = 'FreeBSD-11.2-RELEASE-amd64'
       box.vm.hostname = server[:name]
       box.vm.network 'private_network', type: 'dhcp'
-      box.vm.synced_folder '.', '/vagrant', type: 'nfs'
       box.vm.provider 'virtualbox' do |v|
         v.linked_clone           = true
         v.name, v.cpus, v.memory = server.values_at(:name, :cpus, :memory)
