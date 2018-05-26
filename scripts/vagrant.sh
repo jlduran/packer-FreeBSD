@@ -38,7 +38,6 @@ chown -R 1001 /home/vagrant/.ssh
 chmod 0600 /home/vagrant/.ssh/authorized_keys
 
 # Synced folders
-pkg install -y rsync
 sysrc -f "$RPCBIND_RC_CONF_FILE" rpcbind_enable=YES
 sysrc -f "$NFSD_RC_CONF_FILE" nfs_server_enable=YES
 touch /etc/exports
