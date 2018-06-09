@@ -3,7 +3,7 @@
   "disk_size": "10240",
   "memory": "512",
   "revision": "11.2",
-  "branch": "-RC1",
+  "branch": "-RC2",
   "build_date": "",
   "svn_revision": "",
   "directory": "releases",
