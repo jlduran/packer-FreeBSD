@@ -45,8 +45,8 @@ Sample `Vagrantbox` file
 
 ```ruby
 servers = [
-  { name: 'www.local', cpus: 2, memory: 512 },
-  { name: 'db.local', cpus: 1, memory: 1024 }
+  { name: 'www.local', cpus: 2, memory: 1024 },
+  { name: 'db.local', cpus: 1, memory: 2048 }
 ]
 
 script = <<-SCRIPT
@@ -102,7 +102,7 @@ Below is a sample `variables.json` file:
 {
   "cpus": "1",
   "disk_size": "10240",
-  "memory": "512",
+  "memory": "1024",
   "revision": "11.2",
   "branch": "-RELEASE",
   "build_date": "",
@@ -123,7 +123,7 @@ The following variables can be set:
 -   `disk_size` is the HDD size in megabytes.  _Default:_ `10240`
 
 -   `memory` is the amount of RAM in megabytes assigned.  _Default:_
-    `512`
+    `1024`
 
 -   `revision` is the FreeBSD revision number.  _Default:_ `11.2`
 
