@@ -1,0 +1,69 @@
+if [ "$(uname -p)" = 'amd64' ]; then
+	DISTRIBUTIONS="base.txz kernel.txz lib32.txz"
+else
+	DISTRIBUTIONS="base.txz kernel.txz"
+fi
+
+if [ -e /dev/ada0 ]; then
+	GEOM=ada0 # VirtualBox
+else
+	GEOM=da0  # VMWare
+fi
+
+if [ "$FILESYSTEM" = 'ufs' ]; then
+	PARTITIONS="$GEOM"
+else
+	export ZFSBOOT_DISKS="$GEOM"
+	export nonInteractive="YES"
+fi
+
+#!/bin/sh -e
+
+# Setup rc.conf location sentinel
+if [ "$RC_CONF_FILE" = 'local' ]; then
+	touch /tmp/rc-local
+	SSHD_RC_CONF_FILE=/etc/rc.conf.local
+	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.local
+elif [ "$RC_CONF_FILE" = 'name' ]; then
+	touch /tmp/rc-name
+	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
+	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.d/sendmail
+else
+	SSHD_RC_CONF_FILE=/etc/rc.conf
+	SENDMAIL_RC_CONF_FILE=/etc/rc.conf
+fi
+
+# Disable X11
+echo 'OPTIONS_UNSET+=X11' >> /etc/make.conf
+
+# Basic network options
+sysrc hostname=localhost
+
+# Use DHCP to get the network configuration
+sysrc ifconfig_DEFAULT=SYNCDHCP
+
+# Enable sshd by default
+sysrc -f "$SSHD_RC_CONF_FILE" sshd_enable=YES
+# Disable DNS lookups by default to make SSH connect quickly
+sed -i '' -e 's/^#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
+# Allow root logins during build.  Deactivated upon cleanup
+sed -i '' -e 's/^#PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# Disable sendmail
+sysrc -f "$SENDMAIL_RC_CONF_FILE" sendmail_enable=NONE
+
+# Change root's password to vagrant
+echo 'vagrant' | pw usermod root -h 0
+
+# Reboot quickly, don't wait at the panic screen
+{
+	echo 'debug.trace_on_panic=1'
+	echo 'debug.debugger_on_panic=0'
+	echo 'kern.panic_reboot_wait_time=0'
+} >> /etc/sysctl.conf
+
+# The console is not interactive, so we might as well boot quickly
+sysrc -f /boot/loader.conf autoboot_delay=-1
+
+# Reboot
+reboot

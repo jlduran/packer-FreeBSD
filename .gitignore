@@ -6,3 +6,4 @@
 builds/
 packer_cache/
 output-virtualbox-iso/
+variables.json

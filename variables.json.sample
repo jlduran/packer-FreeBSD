@@ -1,0 +1,15 @@
+{
+  "cpus": "1",
+  "disk_size": "10240",
+  "memory": "1024",
+  "revision": "11.2",
+  "branch": "-RELEASE",
+  "build_date": "",
+  "svn_revision": "",
+  "directory": "releases",
+  "arch": "amd64",
+  "guest_os_type": "FreeBSD_64",
+  "filesystem": "zfs",
+  "mirror": "https://download.freebsd.org/ftp",
+  "rc_conf_file": ""
+}
