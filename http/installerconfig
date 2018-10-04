@@ -1,8 +1,4 @@
-if [ "$(uname -p)" = 'amd64' ]; then
-	DISTRIBUTIONS="base.txz kernel.txz lib32.txz"
-else
-	DISTRIBUTIONS="base.txz kernel.txz"
-fi
+DISTRIBUTIONS="base.txz kernel.txz"
 
 if [ -e /dev/ada0 ]; then
 	GEOM=ada0 # VirtualBox
