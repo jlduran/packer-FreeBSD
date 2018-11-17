@@ -164,7 +164,7 @@ The following variables can be set:
     | -----    | ----                                          |
     |          | `/etc/rc.conf`                                |
     | `local`  | `/etc/rc.conf.local` (Its use is discouraged) |
-    | `name`   | `<dir>/rc.conf.d/<name>`                      |
+    | `name`   | `(/usr/local)/etc/rc.conf.d/<name>`           |
 
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:
