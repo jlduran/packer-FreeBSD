@@ -1,13 +1,10 @@
 #!/bin/sh -e
 
 if [ -e /tmp/rc-local ]; then
-	RPCBIND_RC_CONF_FILE=/etc/rc.conf.local
 	NFSD_RC_CONF_FILE=/etc/rc.conf.local
 elif [ -e /tmp/rc-name ]; then
-	RPCBIND_RC_CONF_FILE=/etc/rc.conf.d/rpcbind
 	NFSD_RC_CONF_FILE=/etc/rc.conf.d/nfsd
 else
-	RPCBIND_RC_CONF_FILE=/etc/rc.conf
 	NFSD_RC_CONF_FILE=/etc/rc.conf
 fi
 
