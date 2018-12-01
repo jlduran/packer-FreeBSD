@@ -1,16 +1,22 @@
 #!/bin/sh -e
 
 if [ -e /tmp/rc-local ]; then
-	IPFW_RC_CONF_FILE=/etc/rc.conf.local
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.local
+	IPFW_RC_CONF_FILE=/etc/rc.conf.local
+	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf.local
+	ROUTING_RC_CONF_FILE=/etc/rc.conf.local
 	SSHD_RC_CONF_FILE=/etc/rc.conf.local
 elif [ -e /tmp/rc-name ]; then
-	IPFW_RC_CONF_FILE=/etc/rc.conf.d/ipfw
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.d/blacklistd
+	IPFW_RC_CONF_FILE=/etc/rc.conf.d/ipfw
+	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf.d/netoptions
+	ROUTING_RC_CONF_FILE=/etc/rc.conf.d/routing
 	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
 else
-	IPFW_RC_CONF_FILE=/etc/rc.conf
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf
+	IPFW_RC_CONF_FILE=/etc/rc.conf
+	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf
+	ROUTING_RC_CONF_FILE=/etc/rc.conf
 	SSHD_RC_CONF_FILE=/etc/rc.conf
 fi
 
@@ -60,6 +66,14 @@ sed -i '' -e 's/^#VersionAddendum .*$/VersionAddendum none/' \
 sed -i '' -e 's/^#X11Forwarding yes/X11Forwarding no/' \
 	/etc/ssh/sshd_config
 
+# Additional TCP/IP options
+sysrc -f "$NETOPTIONS_RC_CONF_FILE" tcp_keepalive=NO
+sysrc -f "$NETOPTIONS_RC_CONF_FILE" tcp_drop_synfin=YES
+sysrc -f "$NETOPTIONS_RC_CONF_FILE" ipv6_privacy=YES
+
+# Routing options
+sysrc -f "$ROUTING_RC_CONF_FILE" icmp_drop_redirect=YES
+
 # Change sysctl default values
 cat > /etc/sysctl.conf <<- EOF
 debug.debugger_on_panic=0
@@ -67,15 +81,12 @@ debug.trace_on_panic=1
 hw.kbd.keymap_restrict_change=4
 kern.ipc.somaxconn=1024
 kern.panic_reboot_wait_time=0
-net.inet.icmp.drop_redirect=1
 net.inet.ip.check_interface=1
 net.inet.ip.process_options=0
 net.inet.ip.random_id=1
 net.inet.ip.redirect=0
 net.inet.sctp.blackhole=2
-net.inet.tcp.always_keepalive=0
 net.inet.tcp.blackhole=2
-net.inet.tcp.drop_synfin=1
 net.inet.tcp.ecn.enable=1
 net.inet.tcp.icmp_may_rst=0
 net.inet.tcp.mssdflt=1440
@@ -84,9 +95,7 @@ net.inet.tcp.path_mtu_discovery=0
 net.inet.udp.blackhole=1
 net.inet6.icmp6.nodeinfo=0
 net.inet6.icmp6.rediraccept=0
-net.inet6.ip6.prefer_tempaddr=1
 net.inet6.ip6.redirect=0
-net.inet6.ip6.use_tempaddr=1
 security.bsd.hardlink_check_gid=1
 security.bsd.hardlink_check_uid=1
 security.bsd.see_jail_proc=0
