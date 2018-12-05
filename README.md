@@ -6,7 +6,7 @@ FreeBSD virtual machine using Packer.
 
 There are [official FreeBSD] VMs available from the Vagrant Cloud.
 
-Pre-requisites
+Prerequisites
 --------------
 
 - [Packer]

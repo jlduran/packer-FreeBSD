@@ -1,0 +1,10 @@
+freebsd_instance:
+  image: freebsd-12-0-rc3-amd64
+  cpu: 8
+  memory: 24G
+
+env:
+  CIRRUS_CLONE_DEPTH: 1
+
+task:
+  script: sh ci/cirrus.sh
