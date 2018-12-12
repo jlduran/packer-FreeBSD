@@ -43,13 +43,12 @@
       "shutdown_command": "poweroff",
       "boot_wait": "10s",
       "http_directory": "http",
+      "cpus": "{{ user `cpus` }}",
       "disk_size": "{{ user `disk_size` }}",
+      "memory": "{{ user `memory` }}",
       "vboxmanage": [
         [
           "modifyvm", "{{ .Name }}",
-          "--audio", "none",
-          "--cpus", "{{ user `cpus` }}",
-          "--memory", "{{ user `memory` }}",
           "--nictype1", "virtio",
           "--nictype2", "virtio"
         ],
