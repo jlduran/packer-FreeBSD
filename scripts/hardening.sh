@@ -66,13 +66,13 @@ sed -i '' -e 's/^#VersionAddendum .*$/VersionAddendum none/' \
 sed -i '' -e 's/^#X11Forwarding yes/X11Forwarding no/' \
 	/etc/ssh/sshd_config
 
-# Additional TCP/IP options
-sysrc -f "$NETOPTIONS_RC_CONF_FILE" tcp_keepalive=NO
-sysrc -f "$NETOPTIONS_RC_CONF_FILE" tcp_drop_synfin=YES
-sysrc -f "$NETOPTIONS_RC_CONF_FILE" ipv6_privacy=YES
-
 # Routing options
 sysrc -f "$ROUTING_RC_CONF_FILE" icmp_drop_redirect=YES
+
+# Additional TCP/IP options
+sysrc -f "$NETOPTIONS_RC_CONF_FILE" ipv6_privacy=YES
+sysrc -f "$NETOPTIONS_RC_CONF_FILE" tcp_keepalive=NO
+sysrc -f "$NETOPTIONS_RC_CONF_FILE" tcp_drop_synfin=YES
 
 # Change sysctl default values
 cat > /etc/sysctl.conf <<- EOF
