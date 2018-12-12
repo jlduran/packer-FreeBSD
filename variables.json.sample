@@ -2,7 +2,7 @@
   "cpus": "1",
   "disk_size": "10240",
   "memory": "1024",
-  "revision": "11.2",
+  "revision": "12.0",
   "branch": "-RELEASE",
   "build_date": "",
   "svn_revision": "",
