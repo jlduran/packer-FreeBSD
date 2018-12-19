@@ -62,6 +62,7 @@ Vagrant.configure(2) do |config|
       box.vm.box      = 'FreeBSD-12.0-RELEASE-amd64'
       box.vm.hostname = server[:name]
       box.vm.provider 'virtualbox' do |v|
+        v.default_nic_type       = 'virtio'
         v.linked_clone           = true
         v.name, v.cpus, v.memory = server.values_at(:name, :cpus, :memory)
       end
