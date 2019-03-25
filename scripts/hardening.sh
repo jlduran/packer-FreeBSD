@@ -2,22 +2,28 @@
 
 if [ -e /tmp/rc-local ]; then
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.local
+	CLEARTMP_RC_CONF_FILE=/etc/rc.conf.local
 	IPFW_RC_CONF_FILE=/etc/rc.conf.local
 	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf.local
 	ROUTING_RC_CONF_FILE=/etc/rc.conf.local
 	SSHD_RC_CONF_FILE=/etc/rc.conf.local
+	SYSLOGD_RC_CONF_FILE=/etc/rc.conf.local
 elif [ -e /tmp/rc-name ]; then
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.d/blacklistd
+	CLEARTMP_RC_CONF_FILE=/etc/rc.conf.d/cleartmp
 	IPFW_RC_CONF_FILE=/etc/rc.conf.d/ipfw
 	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf.d/netoptions
 	ROUTING_RC_CONF_FILE=/etc/rc.conf.d/routing
 	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
+	SYSLOGD_RC_CONF_FILE=/etc/rc.conf.d/syslogd
 else
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf
+	CLEARTMP_RC_CONF_FILE=/etc/rc.conf
 	IPFW_RC_CONF_FILE=/etc/rc.conf
 	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf
 	ROUTING_RC_CONF_FILE=/etc/rc.conf
 	SSHD_RC_CONF_FILE=/etc/rc.conf
+	SYSLOGD_RC_CONF_FILE=/etc/rc.conf
 fi
 
 # Disable weak SSH keys
@@ -74,6 +80,10 @@ sysrc -f "$NETOPTIONS_RC_CONF_FILE" ipv6_privacy=YES
 sysrc -f "$NETOPTIONS_RC_CONF_FILE" tcp_keepalive=NO
 sysrc -f "$NETOPTIONS_RC_CONF_FILE" tcp_drop_synfin=YES
 
+# Additional rc.conf options
+sysrc -f "$CLEARTMP_RC_CONF_FILE" clear_tmp_enable=YES
+sysrc -f "$SYSLOGD_RC_CONF_FILE" syslogd_flags=-ss
+
 # Change sysctl default values
 cat > /etc/sysctl.conf <<- EOF
 debug.debugger_on_panic=0
@@ -81,6 +91,7 @@ debug.trace_on_panic=1
 hw.kbd.keymap_restrict_change=4
 kern.ipc.somaxconn=1024
 kern.panic_reboot_wait_time=0
+kern.randompid=1
 net.inet.ip.check_interface=1
 net.inet.ip.process_options=0
 net.inet.ip.random_id=1
@@ -96,6 +107,7 @@ net.inet.udp.blackhole=1
 net.inet6.icmp6.nodeinfo=0
 net.inet6.icmp6.rediraccept=0
 net.inet6.ip6.redirect=0
+security.bsd.allow_destructive_dtrace=0
 security.bsd.hardlink_check_gid=1
 security.bsd.hardlink_check_uid=1
 security.bsd.see_jail_proc=0
