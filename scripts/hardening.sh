@@ -126,3 +126,11 @@ pw userdel toor
 
 # Secure ttys
 sed -i '' -e 's/ secure/ insecure/g' /etc/ttys
+
+# Secure newsyslog
+sed -i '' -e 's|^/var/log/init.log			644|/var/log/init.log			640|' \
+	/etc/newsyslog.conf
+sed -i '' -e 's|^/var/log/messages			644|/var/log/messages			640|' \
+	/etc/newsyslog.conf
+sed -i '' -e 's|^/var/log/devd.log			644|/var/log/devd.log			640|' \
+	/etc/newsyslog.conf
