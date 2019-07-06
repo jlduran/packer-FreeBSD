@@ -1,13 +1,5 @@
 #!/bin/sh -e
 
-if [ -e /tmp/rc-local ]; then
-	NFSCLIENT_RC_CONF_FILE=/etc/rc.conf.local
-elif [ -e /tmp/rc-name ]; then
-	NFSCLIENT_RC_CONF_FILE=/etc/rc.conf.d/nfsclient
-else
-	NFSCLIENT_RC_CONF_FILE=/etc/rc.conf
-fi
-
 # Install bash & sudo
 pkg install -y bash sudo
 
@@ -33,9 +25,6 @@ fetch -am --no-verify-peer -o /home/vagrant/.ssh/authorized_keys \
 	'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub'
 chown -R 1001 /home/vagrant/.ssh
 chmod 0600 /home/vagrant/.ssh/authorized_keys
-
-# NFS synced folders
-sysrc -f "$NFSCLIENT_RC_CONF_FILE" nfs_client_enable=YES
 
 # Set the build time
 date > /etc/vagrant_box_build_time

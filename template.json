@@ -49,8 +49,7 @@
       "vboxmanage": [
         [
           "modifyvm", "{{ .Name }}",
-          "--nictype1", "virtio",
-          "--nictype2", "virtio"
+          "--nictype1", "virtio"
         ],
         [
           "storagectl", "{{ .Name }}",
