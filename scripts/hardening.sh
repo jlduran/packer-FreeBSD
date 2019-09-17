@@ -8,6 +8,14 @@ if [ -e /tmp/rc-local ]; then
 	ROUTING_RC_CONF_FILE=/etc/rc.conf.local
 	SSHD_RC_CONF_FILE=/etc/rc.conf.local
 	SYSLOGD_RC_CONF_FILE=/etc/rc.conf.local
+elif [ -e /tmp/rc-vendor ]; then
+	BLACKLISTD_RC_CONF_FILE=/etc/defaults/vendor.conf
+	CLEARTMP_RC_CONF_FILE=/etc/defaults/vendor.conf
+	IPFW_RC_CONF_FILE=/etc/defaults/vendor.conf
+	NETOPTIONS_RC_CONF_FILE=/etc/defaults/vendor.conf
+	ROUTING_RC_CONF_FILE=/etc/defaults/vendor.conf
+	SSHD_RC_CONF_FILE=/etc/defaults/vendor.conf
+	SYSLOGD_RC_CONF_FILE=/etc/defaults/vendor.conf
 elif [ -e /tmp/rc-name ]; then
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.d/blacklistd
 	CLEARTMP_RC_CONF_FILE=/etc/rc.conf.d/cleartmp

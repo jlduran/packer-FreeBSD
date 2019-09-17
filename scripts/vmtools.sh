@@ -6,6 +6,12 @@ if [ -e /tmp/rc-local ]; then
 	VBOXNET_RC_CONF_FILE=/etc/rc.conf.local
 	VBOXSERVICE_RC_CONF_FILE=/etc/rc.conf.local
 	VMWARE_GUESTD_RC_CONF_FILE=/etc/rc.conf.local
+elif [ -e /tmp/rc-vendor ]; then
+	DBUS_RC_CONF_FILE=/etc/defaults/vendor.conf
+	VBOXGUEST_RC_CONF_FILE=/etc/defaults/vendor.conf
+	VBOXNET_RC_CONF_FILE=/etc/defaults/vendor.conf
+	VBOXSERVICE_RC_CONF_FILE=/etc/defaults/vendor.conf
+	VMWARE_GUESTD_RC_CONF_FILE=/etc/defaults/vendor.conf
 elif [ -e /tmp/rc-name ]; then
 	DBUS_RC_CONF_FILE=/usr/local/etc/rc.conf.d/dbus
 	VBOXGUEST_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vboxguest

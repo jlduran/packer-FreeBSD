@@ -3,6 +3,9 @@
 if [ -e /tmp/rc-local ]; then
 	MDNSD_RC_CONF_FILE=/etc/rc.conf.local
 	MDNSRESPONDERPOSIX_RC_CONF_FILE=/etc/rc.conf.local
+elif [ -e /tmp/rc-vendor ]; then
+	MDNSD_RC_CONF_FILE=/etc/defaults/vendor.conf
+	MDNSRESPONDERPOSIX_RC_CONF_FILE=/etc/defaults/vendor.conf
 elif [ -e /tmp/rc-name ]; then
 	MDNSD_RC_CONF_FILE=/usr/local/etc/rc.conf.d/mdnsd
 	MDNSRESPONDERPOSIX_RC_CONF_FILE=/usr/local/etc/rc.conf.d/mdnsresponderposix

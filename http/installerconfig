@@ -20,6 +20,10 @@ if [ "$RC_CONF_FILE" = 'local' ]; then
 	touch /tmp/rc-local
 	SSHD_RC_CONF_FILE=/etc/rc.conf.local
 	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.local
+elif [ "$RC_CONF_FILE" = 'vendor' ]; then
+	touch /tmp/rc-vendor
+	SSHD_RC_CONF_FILE=/etc/defaults/vendor.conf
+	SENDMAIL_RC_CONF_FILE=/etc/defaults/vendor.conf
 elif [ "$RC_CONF_FILE" = 'name' ]; then
 	touch /tmp/rc-name
 	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
