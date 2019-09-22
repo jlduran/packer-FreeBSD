@@ -7,7 +7,7 @@ service ntpdate onestart
 freebsd-update --not-running-from-cron fetch install || true
 
 # Bootstrap pkg
-env ASSUME_ALWAYS_YES=yes pkg bootstrap -yf
+env ASSUME_ALWAYS_YES=yes pkg bootstrap -f
 
 # Upgrade packages
-pkg upgrade -y
+pkg upgrade -qy

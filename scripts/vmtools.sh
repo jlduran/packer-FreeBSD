@@ -30,7 +30,7 @@ fi
 case "$PACKER_BUILDER_TYPE" in
 
 	virtualbox-iso|virtualbox-ovf)
-		pkg install -y virtualbox-ose-additions-nox11
+		pkg install -qy virtualbox-ose-additions-nox11
 
 		sysrc -f "$DBUS_RC_CONF_FILE" dbus_enable=YES
 		sysrc -f "$VBOXGUEST_RC_CONF_FILE" vboxguest_enable=YES
@@ -48,7 +48,7 @@ case "$PACKER_BUILDER_TYPE" in
 		;;
 
 	vmware-iso|vmware-vmx)
-		pkg install -y open-vm-tools-nox11
+		pkg install -qy open-vm-tools-nox11
 
 		cat >> "$VMWARE_GUESTD_RC_CONF_FILE" <<- END
 		vmware_guest_vmblock_enable="YES"

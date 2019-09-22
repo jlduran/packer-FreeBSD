@@ -16,7 +16,7 @@ else
 fi
 
 # Install mDNSResponder and mDNSResponder_nss
-pkg install -y mDNSResponder_nss
+pkg install -qy mDNSResponder_nss
 
 # Modify the Name Server Switch configuration file
 sed -i '' -e 's/^hosts: files dns/hosts: files mdns dns/' /etc/nsswitch.conf

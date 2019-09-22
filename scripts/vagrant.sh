@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # Install bash & sudo
-pkg install -y bash sudo
+pkg install -qy bash sudo
 
 # Create the vagrant user with a password of vagrant
 pw groupadd vagrant -g 1001
