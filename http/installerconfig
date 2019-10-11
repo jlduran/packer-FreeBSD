@@ -1,5 +1,3 @@
-DISTRIBUTIONS="base.txz kernel.txz"
-
 if [ -e /dev/ada0 ]; then
 	GEOM=ada0 # VirtualBox
 else
