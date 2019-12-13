@@ -14,14 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Install packer
-      run: sudo apt install packer
-
-    - name: Install vagrant
-      run: sudo apt install vagrant
-
-    - name: Install VirtualBox
-      run: sudo apt install virtualbox
+    - name: Install prerequisites
+      run: sudo apt-get install packer vagrant virtualbox
 
     - name: Create the variables.json file
       run: cp variables.json.sample variables.json
