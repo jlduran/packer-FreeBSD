@@ -9,14 +9,14 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
 
     steps:
     - uses: actions/checkout@v1
 
     - name: Install prerequisites
       run: |
-        sudo apt install libopus0 libqt5core5a libqt5gui5 libqt5opengl5 libqt5printsupport5 libqt5widgets5 libqt5x11extras5 libsdl1.2debian
+        sudo apt-get install libopus0 libqt5core5a libqt5gui5 libqt5opengl5 libqt5printsupport5 libqt5widgets5 libqt5x11extras5 libsdl1.2debian
         curl -LO https://download.virtualbox.org/virtualbox/6.1.0/virtualbox-6.1_6.1.0-135406~Ubuntu~bionic_amd64.deb
         sudo dpkg -i virtualbox-6.1_6.1.0-135406~Ubuntu~bionic_amd64.deb
         curl -LO https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb
