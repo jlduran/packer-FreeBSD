@@ -15,10 +15,13 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Install prerequisites
-      run: sudo apt-get install vagrant virtualbox
+      run: |
+        sudo apt-get install vagrant virtualbox
+        curl -LO https://releases.hashicorp.com/packer/1.4.5/packer_1.4.5_linux_amd64.zip
+        unzip packer_1.4.5_linux_amd64.zip -d packer
 
     - name: Create the variables.json file
       run: cp variables.json.sample variables.json
 
     - name: Build the box
-      run: echo packer build -var-file=variables.json template.json
+      run: ./packer/packer build -var-file=variables.json template.json
