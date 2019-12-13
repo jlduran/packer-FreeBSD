@@ -1,0 +1,30 @@
+name: box
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install packer
+      run: sudo apt install packer
+
+    - name: Install vagrant
+      run: sudo apt install vagrant
+
+    - name: Install VirtualBox
+      run: sudo apt install virtualbox
+
+    - name: Create the variables.json file
+      run: cp variables.json.sample variables.json
+
+    - name: Build the box
+      run: packer build -var-file=variables.json template.json
