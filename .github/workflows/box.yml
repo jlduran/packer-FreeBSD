@@ -16,11 +16,15 @@ jobs:
 
     - name: Install prerequisites
       run: |
-        sudo apt-get update
-        sudo apt-get install packer vagrant virtualbox
+        curl -LO https://download.virtualbox.org/virtualbox/6.1.0/virtualbox-6.1_6.1.0-135406~Ubuntu~bionic_amd64.deb
+        sudo dpkg -i virtualbox-6.1_6.1.0-135406~Ubuntu~bionic_amd64.deb
+        curl -LO https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb
+        sudo dpkg -i vagrant_2.2.6_x86_64.deb
+        curl -LO https://releases.hashicorp.com/packer/1.4.5/packer_1.4.5_linux_amd64.zip
+        unzip packer_1.4.5_linux_amd64.zip -d packer
 
     - name: Create the variables.json file
       run: cp variables.json.sample variables.json
 
     - name: Build the box
-      run: packer build -var-file=variables.json template.json
+      run: ./packer/packer build -var-file=variables.json template.json
