@@ -53,6 +53,8 @@
         [
           "modifyvm",
           "{{ .Name }}",
+          "--graphicscontroller",
+          "vmsvga",
           "--nictype1",
           "virtio"
         ],
