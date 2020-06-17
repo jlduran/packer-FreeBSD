@@ -19,8 +19,7 @@ auth		sufficient	pam_group.so		trust use_uid ruser' \
 	/etc/pam.d/su
 
 # Configure the vagrant ssh key
-mkdir /home/vagrant/.ssh
-chmod 0700 /home/vagrant/.ssh
+mkdir -m 0700 /home/vagrant/.ssh
 fetch -am --no-verify-peer -o /home/vagrant/.ssh/authorized_keys \
 	'https://raw.githubusercontent.com/hashicorp/vagrant/master/keys/vagrant.pub'
 chown -R 1001 /home/vagrant/.ssh
