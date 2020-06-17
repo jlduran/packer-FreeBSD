@@ -36,8 +36,7 @@
       "hard_drive_interface": "sata",
       "headless": true,
       "http_directory": "http",
-      "iso_checksum_type": "sha256",
-      "iso_checksum_url": "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `revision` }}/CHECKSUM.SHA256-FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `svn_revision` }}",
+      "iso_checksum": "file:{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `revision` }}/CHECKSUM.SHA256-FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `svn_revision` }}",
       "iso_interface": "sata",
       "iso_urls": [
         "file://iso/FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `svn_revision` }}-disc1.iso",
@@ -47,8 +46,8 @@
       "shutdown_command": "poweroff",
       "ssh_password": "vagrant",
       "ssh_port": 22,
+      "ssh_timeout": "1000s",
       "ssh_username": "root",
-      "ssh_wait_timeout": "1000s",
       "type": "virtualbox-iso",
       "vboxmanage": [
         [
