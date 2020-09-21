@@ -3,7 +3,7 @@
   "disk_size": "10240",
   "memory": "1024",
   "revision": "12.2",
-  "branch": "-RELEASE",
+  "branch": "-BETA2",
   "build_date": "",
   "svn_revision": "",
   "directory": "releases",
