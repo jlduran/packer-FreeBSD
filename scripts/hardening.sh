@@ -1,4 +1,5 @@
-#!/bin/sh -e
+#!/bin/sh
+set -e
 
 if [ -e /tmp/rc-local ]; then
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.local

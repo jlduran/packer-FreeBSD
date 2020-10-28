@@ -11,7 +11,7 @@ else
 	export nonInteractive="YES"
 fi
 
-#!/bin/sh -e
+#!/bin/sh
 
 # Setup rc.conf location sentinel
 if [ "$RC_CONF_FILE" = 'local' ]; then
