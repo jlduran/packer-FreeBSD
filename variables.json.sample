@@ -5,7 +5,7 @@
   "revision": "12.2",
   "branch": "-RELEASE",
   "build_date": "",
-  "svn_revision": "",
+  "git_commit": "",
   "directory": "releases",
   "arch": "amd64",
   "guest_os_type": "FreeBSD_64",

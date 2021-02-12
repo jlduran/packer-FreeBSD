@@ -107,7 +107,7 @@ Below is a sample `variables.json` file:
   "revision": "12.2",
   "branch": "-RELEASE",
   "build_date": "",
-  "svn_revision": "",
+  "git_commit": "",
   "directory": "releases",
   "arch": "amd64",
   "guest_os_type": "FreeBSD_64",
@@ -128,7 +128,7 @@ The following variables can be set:
 
 -   `revision` is the FreeBSD revision number.  _Default:_ `12.2`
 
--   `branch` used in conjunction with `build_date`, `svn_revision` and
+-   `branch` used in conjunction with `build_date`, `git_commit` and
     `directory`.  _Default:_ `-RELEASE`
 
     See FreeBSD's [Release Branches] for more information.  Possible
