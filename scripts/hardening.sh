@@ -98,6 +98,9 @@ cat > /etc/sysctl.conf <<- EOF
 debug.debugger_on_panic=0
 debug.trace_on_panic=1
 hw.kbd.keymap_restrict_change=4
+kern.elf64.aslr.enable=1
+kern.elf64.aslr.honor_sbrk=0
+kern.elf64.aslr.pie_enable=1
 kern.ipc.somaxconn=1024
 kern.panic_reboot_wait_time=0
 kern.randompid=1
