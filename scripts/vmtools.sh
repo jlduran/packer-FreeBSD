@@ -4,26 +4,22 @@ set -e
 if [ -e /tmp/rc-local ]; then
 	DBUS_RC_CONF_FILE=/etc/rc.conf.local
 	VBOXGUEST_RC_CONF_FILE=/etc/rc.conf.local
-	VBOXNET_RC_CONF_FILE=/etc/rc.conf.local
 	VBOXSERVICE_RC_CONF_FILE=/etc/rc.conf.local
 	VMWARE_GUESTD_RC_CONF_FILE=/etc/rc.conf.local
 elif [ -e /tmp/rc-vendor ]; then
 	DBUS_RC_CONF_FILE=/etc/defaults/vendor.conf
 	VBOXGUEST_RC_CONF_FILE=/etc/defaults/vendor.conf
-	VBOXNET_RC_CONF_FILE=/etc/defaults/vendor.conf
 	VBOXSERVICE_RC_CONF_FILE=/etc/defaults/vendor.conf
 	VMWARE_GUESTD_RC_CONF_FILE=/etc/defaults/vendor.conf
 elif [ -e /tmp/rc-name ]; then
 	DBUS_RC_CONF_FILE=/usr/local/etc/rc.conf.d/dbus
 	VBOXGUEST_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vboxguest
-	VBOXNET_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vboxnet
 	VBOXSERVICE_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vboxservice
 	VMWARE_GUESTD_RC_CONF_FILE=/usr/local/etc/rc.conf.d/vmware_guestd
 	mkdir -p /usr/local/etc/rc.conf.d
 else
 	DBUS_RC_CONF_FILE=/etc/rc.conf
 	VBOXGUEST_RC_CONF_FILE=/etc/rc.conf
-	VBOXNET_RC_CONF_FILE=/etc/rc.conf
 	VBOXSERVICE_RC_CONF_FILE=/etc/rc.conf
 	VMWARE_GUESTD_RC_CONF_FILE=/etc/rc.conf
 fi
@@ -35,7 +31,6 @@ case "$PACKER_BUILDER_TYPE" in
 
 		sysrc -f "$DBUS_RC_CONF_FILE" dbus_enable=YES
 		sysrc -f "$VBOXGUEST_RC_CONF_FILE" vboxguest_enable=YES
-		sysrc -f "$VBOXNET_RC_CONF_FILE" vboxnet_enable=YES
 		sysrc -f "$VBOXSERVICE_RC_CONF_FILE" vboxservice_enable=YES
 
 		cat >> /boot/loader.conf <<- END
