@@ -3,7 +3,7 @@
   "disk_size": "10240",
   "memory": "1024",
   "revision": "13.0",
-  "branch": "-RC2",
+  "branch": "-RC3",
   "build_date": "",
   "git_commit": "",
   "directory": "releases",
