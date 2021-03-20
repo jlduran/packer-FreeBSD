@@ -39,7 +39,7 @@
       "iso_checksum": "file:{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `revision` }}/CHECKSUM.SHA256-FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `git_commit` }}",
       "iso_interface": "sata",
       "iso_urls": [
-        "file://iso/FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `git_commit` }}-disc1.iso",
+        "iso/FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `git_commit` }}-disc1.iso",
         "{{ user `mirror` }}/{{ user `directory` }}/ISO-IMAGES/{{ user `revision` }}/FreeBSD-{{ user `revision` }}{{ user `branch` }}-{{ user `arch` }}{{ user `build_date` }}{{ user `git_commit` }}-disc1.iso"
       ],
       "memory": "{{ user `memory` }}",
