@@ -1,0 +1,21 @@
+name: box
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: macos-10.15
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create the variables.json file
+      run: cp variables.json.sample variables.json
+
+    - name: Build the box
+      run: packer build -var-file=variables.json template.json
