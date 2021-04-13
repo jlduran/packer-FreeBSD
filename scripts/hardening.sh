@@ -108,7 +108,6 @@ net.inet.ip.check_interface=1
 net.inet.ip.process_options=0
 net.inet.ip.random_id=1
 net.inet.ip.redirect=0
-net.inet.sctp.blackhole=2
 net.inet.tcp.blackhole=2
 net.inet.tcp.ecn.enable=1
 net.inet.tcp.icmp_may_rst=0
