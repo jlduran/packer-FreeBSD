@@ -1,0 +1,54 @@
+name: box
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: validate
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Fix Template
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: fix
+          target: template.json
+
+      - name: Validate Template
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: validate
+          arguments: -syntax-only
+          target: template.json
+
+      # XXX Packer's Docker image does not contain VirtualBox.
+      #     Check if nested virtualization is already supported
+      #     and roll our own action for building.
+      # - name: Build Artifact
+      #   uses: hashicorp/packer-github-actions@master
+      #   with:
+      #     command: build
+      #     arguments: "-color=false -on-error=abort -var-file=variables.json.sample"
+      #     target: template.json
+      #   env:
+      #     PACKER_LOG: 1
+
+  build:
+    runs-on: macos-10.15
+    needs: validate
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Create the variables.json file
+      run: cp variables.json.sample variables.json
+
+    - name: Build the box
+      run: packer build -var-file=variables.json template.json
