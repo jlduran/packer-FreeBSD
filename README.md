@@ -25,16 +25,11 @@ To create a box:
         $ git clone https://github.com/jlduran/packer-FreeBSD.git
         $ cd packer-FreeBSD
 
-2.  Create the `variables.json` file.  See
-    [Build Options](#build-options) for more information.
+2.  Build the box:
 
-        $ cp variables.json.sample variables.json
+        $ packer build .
 
-3.  Build the box:
-
-        $ packer build -var-file=variables.json template.json
-
-4.  Add it to the list of Vagrant boxes.  See
+3.  Add it to the list of Vagrant boxes.  See
     [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
     more information.
 
@@ -97,24 +92,22 @@ end
 
 ### Build Options
 
-Below is a sample `variables.json` file:
+Below is a sample `variables.pkrvars.hcl` file:
 
-```json
-{
-  "cpus": "1",
-  "disk_size": "10240",
-  "memory": "1024",
-  "revision": "13.0",
-  "branch": "-RELEASE",
-  "build_date": "",
-  "git_commit": "",
-  "directory": "releases",
-  "arch": "amd64",
-  "guest_os_type": "FreeBSD_64",
-  "filesystem": "zfs",
-  "mirror": "https://download.freebsd.org/ftp",
-  "rc_conf_file": ""
-}
+```hcl
+arch          = "amd64"
+branch        = "-RELEASE"
+build_date    = ""
+cpus          = 1
+directory     = "releases"
+disk_size     = 10240
+filesystem    = "zfs"
+git_commit    = ""
+guest_os_type = "FreeBSD_64"
+memory        = 1024
+mirror        = "https://download.freebsd.org/ftp"
+rc_conf_file  = ""
+revision      = "13.0"
 ```
 
 The following variables can be set:
@@ -167,6 +160,11 @@ The following variables can be set:
     | `local`  | `/etc/rc.conf.local` (Its use is discouraged) |
     | `vendor` | `/etc/defaults/vendor.conf`                   |
     | `name`   | `(/usr/local)/etc/rc.conf.d/<name>`           |
+
+Create a `variables.pkrvars.hcl` file overriding the default
+values, and invoke:
+
+    $ packer build -var-file="variables.pkrvars.hcl" .
 
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:

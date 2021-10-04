@@ -1,0 +1,13 @@
+arch          = "amd64"
+branch        = "-RELEASE"
+build_date    = ""
+cpus          = 1
+directory     = "releases"
+disk_size     = 10240
+filesystem    = "zfs"
+git_commit    = ""
+guest_os_type = "FreeBSD_64"
+memory        = 1024
+mirror        = "https://download.freebsd.org/ftp"
+rc_conf_file  = ""
+revision      = "13.0"
