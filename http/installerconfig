@@ -65,4 +65,4 @@ echo 'vagrant' | pw usermod root -h 0
 sysrc -f /boot/loader.conf autoboot_delay=-1
 
 # Reboot
-reboot
+shutdown -r now
