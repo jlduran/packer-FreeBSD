@@ -15,18 +15,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Fix Template
-        uses: hashicorp/packer-github-actions@master
-        with:
-          command: fix
-          target: template.json
+      # XXX This command is not available on HCL2 templates yet.
+      # - name: Fix Template
+      # - uses: hashicorp/packer-github-actions@master
+      # - with:
+      # -   command: fix
 
       - name: Validate Template
         uses: hashicorp/packer-github-actions@master
         with:
           command: validate
           arguments: -syntax-only
-          target: template.json
 
       # XXX Packer's Docker image does not contain VirtualBox.
       #     Check if nested virtualization is already supported
@@ -35,8 +34,7 @@ jobs:
       #   uses: hashicorp/packer-github-actions@master
       #   with:
       #     command: build
-      #     arguments: "-color=false -on-error=abort -var-file=variables.json.sample"
-      #     target: template.json
+      #     arguments: "-color=false -on-error=abort"
       #   env:
       #     PACKER_LOG: 1
 
@@ -47,8 +45,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Create the variables.json file
-      run: cp variables.json.sample variables.json
-
     - name: Build the box
-      run: packer build -var-file=variables.json template.json
+      run: packer build .
