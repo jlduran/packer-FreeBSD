@@ -72,6 +72,8 @@ sed -i '' -e 's/^#MaxSessions 10/MaxSessions 2/' \
 	/etc/ssh/sshd_config
 sed -i '' -e 's/^#ChallengeResponseAuthentication yes/ChallengeResponseAuthentication no/' \
 	/etc/ssh/sshd_config
+sed -i '' -e 's/^#KbdInteractiveAuthentication yes/KbdInteractiveAuthentication no/' \
+	/etc/ssh/sshd_config
 sed -i '' -e 's/^#UsePAM yes/UsePAM no/' \
 	/etc/ssh/sshd_config
 sed -i '' -e 's/^#TCPKeepAlive yes/TCPKeepAlive no/' \
