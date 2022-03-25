@@ -105,7 +105,7 @@ filesystem    = "zfs"
 git_commit    = ""
 guest_os_type = "FreeBSD_64"
 memory        = 1024
-mirror        = "https://download.freebsd.org/ftp"
+mirror        = "https://download.freebsd.org"
 rc_conf_file  = ""
 revision      = "13.1"
 ```
@@ -149,7 +149,7 @@ The following variables can be set:
     `zfs`
 
 -   `mirror` is the preferred FreeBSD mirror.  _Default:_
-    `https://download.freebsd.org/ftp`
+    `https://download.freebsd.org`
 
 -   `rc_conf_file` is the file where `rc.conf` parameters are stored.
     _Default: empty_ .  Possible values are:

@@ -50,7 +50,7 @@ variable "memory" {
 
 variable "mirror" {
   type    = string
-  default = "https://download.freebsd.org/ftp"
+  default = "https://download.freebsd.org"
 }
 
 variable "rc_conf_file" {
