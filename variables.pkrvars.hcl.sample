@@ -10,4 +10,4 @@ guest_os_type = "FreeBSD_64"
 memory        = 1024
 mirror        = "https://download.freebsd.org/ftp"
 rc_conf_file  = ""
-revision      = "13.0"
+revision      = "13.1"
