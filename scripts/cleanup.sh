@@ -6,6 +6,7 @@ sed -i '' -e 's/^PermitRootLogin yes/#PermitRootLogin no/' /etc/ssh/sshd_config
 
 # Purge files we no longer need
 rm -rf /boot/kernel.old
+rm -f /etc/hostid
 rm -f /etc/ssh/ssh_host_*
 rm -f /root/*.iso
 rm -f /root/.vbox_version

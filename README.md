@@ -33,7 +33,7 @@ To create a box:
     [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
     more information.
 
-        $ vagrant box add builds/FreeBSD-13.0-RELEASE-amd64.box --name FreeBSD-13.0-RELEASE-amd64
+        $ vagrant box add builds/FreeBSD-13.1-RELEASE-amd64.box --name FreeBSD-13.1-RELEASE-amd64
 
 Sample `Vagrantbox` file
 ------------------------
@@ -54,7 +54,7 @@ ansible_raw_arguments = []
 Vagrant.configure(2) do |config|
   servers.each do |server|
     config.vm.define server[:name] do |box|
-      box.vm.box      = 'FreeBSD-13.0-RELEASE-amd64'
+      box.vm.box      = 'FreeBSD-13.1-RELEASE-amd64'
       box.vm.hostname = server[:name]
       box.vm.provider 'virtualbox' do |v|
         v.default_nic_type       = 'virtio'
@@ -105,9 +105,9 @@ filesystem    = "zfs"
 git_commit    = ""
 guest_os_type = "FreeBSD_64"
 memory        = 1024
-mirror        = "https://download.freebsd.org/ftp"
+mirror        = "https://download.freebsd.org"
 rc_conf_file  = ""
-revision      = "13.0"
+revision      = "13.1"
 ```
 
 The following variables can be set:
@@ -119,7 +119,7 @@ The following variables can be set:
 -   `memory` is the amount of RAM in megabytes assigned.  _Default:_
     `1024`
 
--   `revision` is the FreeBSD revision number.  _Default:_ `13.0`
+-   `revision` is the FreeBSD revision number.  _Default:_ `13.1`
 
 -   `branch` used in conjunction with `build_date`, `git_commit` and
     `directory`.  _Default:_ `-RELEASE`
@@ -149,7 +149,7 @@ The following variables can be set:
     `zfs`
 
 -   `mirror` is the preferred FreeBSD mirror.  _Default:_
-    `https://download.freebsd.org/ftp`
+    `https://download.freebsd.org`
 
 -   `rc_conf_file` is the file where `rc.conf` parameters are stored.
     _Default: empty_ .  Possible values are:
