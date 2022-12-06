@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # XXX This command is not available on HCL2 templates yet.
       # - name: Fix Template
@@ -43,7 +43,7 @@ jobs:
     needs: validate
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Build the box
       run: packer build .
