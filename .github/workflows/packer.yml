@@ -15,28 +15,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # XXX This command is not available on HCL2 templates yet.
-      # - name: Fix Template
-      # - uses: hashicorp/packer-github-actions@master
-      # - with:
-      # -   command: fix
-
       - name: Validate Template
-        uses: hashicorp/packer-github-actions@master
-        with:
-          command: validate
-          arguments: -syntax-only
-
-      # XXX Packer's Docker image does not contain VirtualBox.
-      #     Check if nested virtualization is already supported
-      #     and roll our own action for building.
-      # - name: Build Artifact
-      #   uses: hashicorp/packer-github-actions@master
-      #   with:
-      #     command: build
-      #     arguments: "-color=false -on-error=abort"
-      #   env:
-      #     PACKER_LOG: 1
+        uses: hashicorp/setup-packer@main
+        run: "packer validate -syntax-only"
 
   build:
     runs-on: macos-10.15
