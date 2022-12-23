@@ -15,4 +15,5 @@ rm -rf /var/db/freebsd-update/files/*
 rm -f /var/db/freebsd-update/*-rollback
 rm -rf /var/db/freebsd-update/install.*
 rm -f /var/db/pkg/repo-*.sqlite
+rm -f /var/db/machine-id
 rm -rf /var/log/*
