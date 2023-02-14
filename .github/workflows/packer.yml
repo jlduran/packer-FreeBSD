@@ -21,7 +21,7 @@ jobs:
       - run: "packer validate ."
 
   build:
-    runs-on: macos-10.15
+    runs-on: macos-latest
     needs: validate
 
     steps:
