@@ -33,7 +33,7 @@ To create a box:
     [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
     more information.
 
-        $ vagrant box add builds/FreeBSD-13.1-RELEASE-amd64.box --name FreeBSD-13.1-RELEASE-amd64
+        $ vagrant box add builds/FreeBSD-13.2-RELEASE-amd64.box --name FreeBSD-13.2-RELEASE-amd64
 
 Sample `Vagrantbox` file
 ------------------------
@@ -54,7 +54,7 @@ ansible_raw_arguments = []
 Vagrant.configure(2) do |config|
   servers.each do |server|
     config.vm.define server[:name] do |box|
-      box.vm.box      = 'FreeBSD-13.1-RELEASE-amd64'
+      box.vm.box      = 'FreeBSD-13.2-RELEASE-amd64'
       box.vm.hostname = server[:name]
       box.vm.provider 'virtualbox' do |v|
         v.default_nic_type       = 'virtio'
@@ -107,7 +107,7 @@ guest_os_type = "FreeBSD_64"
 memory        = 1024
 mirror        = "https://download.freebsd.org"
 rc_conf_file  = ""
-revision      = "13.1"
+revision      = "13.2"
 ```
 
 The following variables can be set:
@@ -119,7 +119,7 @@ The following variables can be set:
 -   `memory` is the amount of RAM in megabytes assigned.  _Default:_
     `1024`
 
--   `revision` is the FreeBSD revision number.  _Default:_ `13.1`
+-   `revision` is the FreeBSD revision number.  _Default:_ `13.2`
 
 -   `branch` used in conjunction with `build_date`, `git_commit` and
     `directory`.  _Default:_ `-RELEASE`
