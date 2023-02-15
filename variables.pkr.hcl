@@ -62,3 +62,8 @@ variable "revision" {
   type    = string
   default = "13.1"
 }
+
+variable "zfs_compression" {
+  type    = string
+  default = "zstd"
+}

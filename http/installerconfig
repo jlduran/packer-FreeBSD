@@ -8,7 +8,9 @@ if [ "$FILESYSTEM" = 'ufs' ]; then
 	PARTITIONS="$GEOM"
 else
 	export ZFSBOOT_DISKS="$GEOM"
-	export ZFSBOOT_POOL_CREATE_OPTIONS="-O compress=zstd -O atime=off"
+	if [ "$ZFS_COMPRESSION" = 'zstd' ]; then
+		export ZFSBOOT_POOL_CREATE_OPTIONS="-O compress=zstd -O atime=off"
+	fi
 	export ZFSBOOT_SWAP_ENCRYPTION=1
 	export nonInteractive="YES"
 fi
