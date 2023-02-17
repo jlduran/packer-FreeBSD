@@ -1,5 +1,5 @@
 arch            = "amd64"
-branch          = "-BETA1"
+branch          = "-BETA2"
 build_date      = ""
 cpus            = 1
 directory       = "releases"
