@@ -149,8 +149,8 @@ The following variables can be set:
 -   `filesystem` is the file system type (`ufs` or `zfs`).  _Default:_
     `zfs`
 
--   `zfs_compression` is the compression algorithm (`zstd` or `lz4`).  _Default:_
-    `zstd`
+-   `zfs_compression` is the ZFS compression algorithm (`zstd` or `lz4`).
+    _Default:_ `zstd`
 
 -   `mirror` is the preferred FreeBSD mirror.  _Default:_
     `https://download.freebsd.org`
