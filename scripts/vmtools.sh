@@ -36,9 +36,6 @@ case "$PACKER_BUILDER_TYPE" in
 		cat >> /boot/loader.conf <<- END
 		#VIRTUALBOX-BEGIN
 		vboxdrv_load="YES"
-		virtio_balloon_load="YES"
-		virtio_blk_load="YES"
-		virtio_scsi_load="YES"
 		#VIRTUALBOX-END
 		END
 		;;
