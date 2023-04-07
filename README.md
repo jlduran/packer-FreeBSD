@@ -194,11 +194,11 @@ the `.iso` image and save it to the `iso` directory.
 `.box` files will be created under the `builds` directory.
 
 [official FreeBSD]: https://app.vagrantup.com/freebsd
-[Release Branches]: https://www.freebsd.org/doc/en/books/dev-model/release-branches.html
-[Packer]: https://www.packer.io/docs/installation.html
-[Vagrant]: https://www.vagrantup.com/downloads.html
+[Release Branches]: https://docs.freebsd.org/en/books/dev-model/#release-branches
+[Packer]: https://developer.hashicorp.com/packer/downloads#install
+[Vagrant]: https://developer.hashicorp.com/vagrant/downloads
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
-[VMWare Fusion]: http://www.vmware.com/products/fusion/
+[VMWare Fusion]: https://www.vmware.com/products/fusion.html
 [`ansible`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/ansible.sh
 [`cleanup`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/cleanup.sh
 [`hardening`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/hardening.sh
