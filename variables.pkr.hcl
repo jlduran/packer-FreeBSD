@@ -33,6 +33,11 @@ variable "filesystem" {
   default = "zfs"
 }
 
+variable "zfs_compression" {
+  type    = string
+  default = "zstd"
+}
+
 variable "git_commit" {
   type    = string
   default = ""
@@ -60,5 +65,5 @@ variable "rc_conf_file" {
 
 variable "revision" {
   type    = string
-  default = "13.1"
+  default = "13.2"
 }
