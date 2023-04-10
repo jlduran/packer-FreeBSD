@@ -3,15 +3,15 @@ source "virtualbox-iso" "freebsd" {
   boot_wait               = "10s"
   cpus                    = "${var.cpus}"
   disk_size               = "${var.disk_size}"
-  export_opts             = ["--manifest", "--vsys", "0", "--product", "FreeBSD-${var.revision}${var.branch}-${var.arch}${var.build_date}", "--producturl", "https://www.freebsd.org", "--description", "FreeBSD is an operating system used to power modern servers, desktops, and embedded platforms.", "--version", "${var.revision}${var.branch}"]
+  export_opts             = ["--manifest", "--vsys", "0", "--product", "FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}", "--producturl", "https://www.freebsd.org", "--description", "FreeBSD is an operating system used to power modern servers, desktops, and embedded platforms.", "--version", "${var.revision}-${var.branch}"]
   guest_additions_mode    = "disable"
   guest_os_type           = "${var.guest_os_type}"
   hard_drive_interface    = "sata"
   headless                = true
   http_directory          = "http"
-  iso_checksum            = "file:${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/CHECKSUM.SHA256-FreeBSD-${var.revision}${var.branch}-${var.arch}${var.build_date}${var.git_commit}"
+  iso_checksum            = "file:${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/CHECKSUM.SHA256-FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}"
   iso_interface           = "sata"
-  iso_urls                = ["iso/FreeBSD-${var.revision}${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso", "${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/FreeBSD-${var.revision}${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso"]
+  iso_urls                = ["iso/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso", "${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso"]
   memory                  = "${var.memory}"
   shutdown_command        = "poweroff"
   ssh_password            = "vagrant"
@@ -32,7 +32,7 @@ build {
   }
 
   post-processor "vagrant" {
-    output               = "builds/FreeBSD-${var.revision}${var.branch}-${var.arch}${var.build_date}${var.git_commit}.box"
+    output               = "builds/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}.box"
     vagrantfile_template = "vagrantfile.tpl"
   }
 }

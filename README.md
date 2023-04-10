@@ -96,7 +96,7 @@ Below is a sample `variables.pkrvars.hcl` file:
 
 ```hcl
 arch            = "amd64"
-branch          = "-RELEASE"
+branch          = "RELEASE"
 build_date      = ""
 cpus            = 1
 directory       = "releases"
@@ -123,20 +123,20 @@ The following variables can be set:
 -   `revision` is the FreeBSD revision number.  _Default:_ `13.2`
 
 -   `branch` used in conjunction with `build_date`, `git_commit` and
-    `directory`.  _Default:_ `-RELEASE`
+    `directory`.  _Default:_ `RELEASE`
 
     See FreeBSD's [Release Branches] for more information.  Possible
     values are:
 
-    | Branch                  | Directory   |
-    | ------                  | ---------   |
-    | `-CURRENT`              | `snapshots` |
-    | `-STABLE`               | `snapshots` |
-    | `-ALPHA1`, `-ALPHA2`, … | `snapshots` |
-    | `-PRERELEASE`           | `snapshots` |
-    | `-BETA1`, `-BETA2`, …   | `releases`  |
-    | `-RC1`, `-RC2`, …       | `releases`  |
-    | `-RELEASE`              | `releases`  |
+    | Branch                | Directory   |
+    | ------                | ---------   |
+    | `CURRENT`             | `snapshots` |
+    | `STABLE`              | `snapshots` |
+    | `ALPHA1`, `ALPHA2`, … | `snapshots` |
+    | `PRERELEASE`          | `snapshots` |
+    | `BETA1`, `BETA2`, …   | `releases`  |
+    | `RC1`, `RC2`, …       | `releases`  |
+    | `RELEASE`             | `releases`  |
 
 -   `arch` is the target architecture (`i386` or `amd64`).  _Default:_
     `amd64`
