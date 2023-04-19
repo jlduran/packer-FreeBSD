@@ -185,10 +185,10 @@ it runs the following provisioning scripts:
 
 The following scripts are also available:
 
-| Name          | Description                              |
-| ----          | -----------                              |
-| [`hardening`] | Provides basic hardening options         |
-| [`ports`]     | Installs the FreeBSD ports tree          |
+| Name          | Description                      |
+| ----          | -----------                      |
+| [`hardening`] | Provides basic hardening options |
+| [`ports`]     | Installs the FreeBSD ports tree  |
 
 ### Handling `.iso` and `.box` files
 
