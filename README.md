@@ -178,6 +178,7 @@ it runs the following provisioning scripts:
 | [`update`]     | Updates to the latest patch level (if applicable) and the latest packages |
 | [`vagrant`]    | Vagrant-related configuration                                             |
 | [`zeroconf`]   | Enables zero-configuration networking                                     |
+| [`ansible`]    | Installs python and CA Root certificates                                  |
 | [`cloud-init`] | Installs cloud-init                                                       |
 | [`vmtools`]    | Virtual Machine-specific utilities                                        |
 | [`cleanup`]    | Cleanup script (must be called last)                                      |
@@ -186,7 +187,6 @@ The following scripts are also available:
 
 | Name          | Description                              |
 | ----          | -----------                              |
-| [`ansible`]   | Installs python and CA Root certificates |
 | [`hardening`] | Provides basic hardening options         |
 | [`ports`]     | Installs the FreeBSD ports tree          |
 
