@@ -149,4 +149,4 @@ sed -i '' -e 's|^/var/log/devd.log			644|/var/log/devd.log			640|' \
 	/etc/newsyslog.conf
 
 # Secure /var/run/dmesg.boot
-sed -i '' -e 's/umask 022/umask 026/' /var/run/dmesg.boot
+sed -i '' -e 's/umask 022/umask 026/' /etc/rc.d/dmesg
