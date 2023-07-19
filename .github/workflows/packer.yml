@@ -29,3 +29,5 @@ jobs:
 
     - name: Build the box
       run: packer build .
+      env:
+        ntpdate_hosts: ntp.ubuntu.com
