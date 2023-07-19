@@ -143,10 +143,10 @@ sed -i '' -e 's/ secure/ insecure/g' /etc/ttys
 # Secure newsyslog
 sed -i '' -e 's|^/var/log/init.log			644|/var/log/init.log			640|' \
 	/etc/newsyslog.conf
-sed -i '' -e 's|^/var/log/messages			644|/var/log/messages			640|' \
+sed -i '' -e 's|^/var/log/messages			644|/var/log/messages			600|' \
 	/etc/newsyslog.conf
 sed -i '' -e 's|^/var/log/devd.log			644|/var/log/devd.log			640|' \
 	/etc/newsyslog.conf
 
 # Secure /var/run/dmesg.boot
-sed -i '' -e 's/umask 022/umask 026/' /etc/rc.d/dmesg
+sed -i '' -e 's/umask 022/umask 066/' /etc/rc.d/dmesg
