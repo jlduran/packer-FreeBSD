@@ -148,5 +148,9 @@ sed -i '' -e 's|^/var/log/messages			644|/var/log/messages			600|' \
 sed -i '' -e 's|^/var/log/devd.log			644|/var/log/devd.log			640|' \
 	/etc/newsyslog.conf
 
+[ -e /var/log/init.log ] && chmod -f 0640 /var/log/init.log || true
+[ -e /var/log/messages ] && chmod -f 0600 /var/log/messages || true
+[ -e /var/log/devd.log ] && chmod -f 0640 /var/log/devd.log || true
+
 # Secure /var/run/dmesg.boot
 sed -i '' -e 's/umask 022/umask 066/' /etc/rc.d/dmesg
