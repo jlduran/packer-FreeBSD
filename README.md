@@ -4,7 +4,8 @@ packer-FreeBSD
 This repository contains the necessary tools to build a Vagrant-ready
 FreeBSD virtual machine using Packer.
 
-There are [official FreeBSD] VMs available from the Vagrant Cloud.
+> [!NOTE]
+> There are [official FreeBSD] VMs available from the Vagrant Cloud.
 
 Prerequisites
 --------------
