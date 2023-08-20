@@ -1,7 +1,7 @@
 if [ -e /dev/ada0 ]; then
 	GEOM=ada0 # VirtualBox
 else
-	GEOM=da0  # VMWare
+	GEOM=vtbd0
 fi
 
 if [ "$FILESYSTEM" = 'ufs' ]; then
