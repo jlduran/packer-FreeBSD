@@ -60,6 +60,12 @@ case "$PACKER_BUILDER_TYPE" in
 		rm /root/*.iso
 		;;
 
+	qemu)
+		pkg install -qy qemu-guest-agent
+		sysrc qemu_guest_agent_enable=YES
+		sysrc qemu_guest_agent_flags="-d -v -l /var/log/qemu-ga.log"
+		;;
+
 	*)
 		echo "Unknown Packer Builder Type >>$PACKER_BUILDER_TYPE<< selected."
 		echo "Known types are virtualbox-iso|virtualbox-ovf|vmware-iso|vmware-vmx|parallels-iso|parallels-pvm."
