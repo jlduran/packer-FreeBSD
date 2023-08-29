@@ -15,19 +15,31 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Validate Template
+      - name: Setup Packer
         uses: hashicorp/setup-packer@main
 
-      - run: "packer validate ."
+      - name: Initialize Packer
+        run: packer init .
+        env:
+          PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Validate Template
+        run: packer validate .
 
   build:
     runs-on: macos-latest
     needs: validate
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Build the box
-      run: packer build .
-      env:
-        ntpdate_hosts: ntp.ubuntu.com
+      - name: Initialize Packer
+        run: packer init .
+        env:
+          PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Build the Box
+        run: packer -machine-readable build .
+        env:
+          ntpdate_hosts: ntp.ubuntu.com
