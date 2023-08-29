@@ -34,10 +34,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Dependencies
-        run: |
-          brew install qemu
-
       - name: Initialize Packer
         run: packer init .
         env:
