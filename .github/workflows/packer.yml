@@ -40,6 +40,6 @@ jobs:
           PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Build the Box
-        run: packer -machine-readable build .
+        run: packer build .
         env:
           ntpdate_hosts: ntp.ubuntu.com
