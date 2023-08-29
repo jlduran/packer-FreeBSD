@@ -26,11 +26,15 @@ To create a box:
         $ git clone https://github.com/jlduran/packer-FreeBSD.git
         $ cd packer-FreeBSD
 
-2.  Build the box:
+2.  Initialize packer:
+
+        $ packer init .
+
+3.  Build the box:
 
         $ packer build .
 
-3.  Add it to the list of Vagrant boxes.  See
+4.  Add it to the list of Vagrant boxes.  See
     [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
     more information.
 
