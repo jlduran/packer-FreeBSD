@@ -6,6 +6,8 @@ sed -i '' -e 's/^PermitRootLogin yes/#PermitRootLogin no/' /etc/ssh/sshd_config
 
 # Purge files we no longer need
 rm -rf /boot/kernel.old
+rm -f /boot/efi/EFI/FreeBSD/*-old.efi
+rm -f /boot/efi/EFI/BOOT/*-old.efi
 rm -f /etc/hostid
 rm -f /etc/machine-id
 rm -f /etc/ssh/ssh_host_*
