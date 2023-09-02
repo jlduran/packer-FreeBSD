@@ -1,7 +1,11 @@
 if [ -e /dev/ada0 ]; then
-	GEOM=ada0 # VirtualBox
-else
-	GEOM=da0  # VMWare
+	GEOM=ada0 # ATA (VirtualBox)
+fi
+if [ -e /dev/da0 ]; then
+	GEOM=da0 # SCSI (VMWare)
+fi
+if [ -e /dev/vtbd0 ]; then
+	GEOM=vtbd0 # VirtIO (QEMU)
 fi
 
 if [ "$FILESYSTEM" = 'ufs' ]; then

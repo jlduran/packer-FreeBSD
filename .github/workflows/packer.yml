@@ -9,7 +9,7 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    name: validate
+    name: Validate
 
     steps:
       - name: Checkout Repository
@@ -26,8 +26,9 @@ jobs:
       - name: Validate Template
         run: packer validate .
 
-  build:
+  qemu:
     runs-on: macos-latest
+    name: QEMU Builder
     needs: validate
 
     steps:
@@ -40,6 +41,25 @@ jobs:
           PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Build the Box
-        run: packer build .
+        run: packer build -only=qemu.freebsd .
+        env:
+          ntpdate_hosts: ntp.ubuntu.com
+
+  virtualbox:
+    runs-on: macos-latest
+    name: VirtualBox Builder
+    needs: validate
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Initialize Packer
+        run: packer init .
+        env:
+          PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Build the Box
+        run: packer build -only=virtualbox-iso.freebsd .
         env:
           ntpdate_hosts: ntp.ubuntu.com
