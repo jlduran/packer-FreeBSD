@@ -32,7 +32,7 @@ To create a box:
 
 3.  Build the box:
 
-        $ packer build -only=virtualbox-iso .
+        $ packer build -only=virtualbox-iso.freebsd .
 
 4.  Add it to the list of Vagrant boxes.  See
     [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
