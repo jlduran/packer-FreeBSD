@@ -14,7 +14,7 @@ Prerequisites
 
 - [Vagrant]
 
-- [VirtualBox] or [VMWare Fusion]
+- [QEMU], [VirtualBox] or [VMWare Fusion]
 
 Instructions
 ------------
@@ -32,7 +32,7 @@ To create a box:
 
 3.  Build the box:
 
-        $ packer build .
+        $ packer build -only=virtualbox-iso .
 
 4.  Add it to the list of Vagrant boxes.  See
     [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
@@ -200,11 +200,12 @@ Packer will automatically download the `.iso` image if it does not find
 the right one under the `iso` directory.  Optionally, you can download
 the `.iso` image and save it to the `iso` directory.
 
-`.box` files will be created under the `builds` directory.
+`.box` (or `.qcow2`) files will be created under the `builds` directory.
 
 [official FreeBSD]: https://app.vagrantup.com/freebsd
 [Release Branches]: https://docs.freebsd.org/en/books/dev-model/#release-branches
 [Packer]: https://developer.hashicorp.com/packer/downloads#install
+[QEMU]: https://www.qemu.org/download/
 [Vagrant]: https://developer.hashicorp.com/vagrant/downloads
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
 [VMWare Fusion]: https://www.vmware.com/products/fusion.html
