@@ -53,7 +53,7 @@ build {
   }
 
   post-processor "vagrant" {
-    output               = "builds/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}.qcow2"
+    output               = "builds/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}.box"
     vagrantfile_template = "vagrantfile.tpl"
   }
 }

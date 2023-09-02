@@ -200,7 +200,7 @@ Packer will automatically download the `.iso` image if it does not find
 the right one under the `iso` directory.  Optionally, you can download
 the `.iso` image and save it to the `iso` directory.
 
-`.box` (or `.qcow2`) files will be created under the `builds` directory.
+`.box` files will be created under the `builds` directory.
 
 [official FreeBSD]: https://app.vagrantup.com/freebsd
 [Release Branches]: https://docs.freebsd.org/en/books/dev-model/#release-branches
