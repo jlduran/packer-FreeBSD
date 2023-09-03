@@ -8,6 +8,7 @@ if [ -e /tmp/rc-local ]; then
 	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf.local
 	ROUTING_RC_CONF_FILE=/etc/rc.conf.local
 	SSHD_RC_CONF_FILE=/etc/rc.conf.local
+	SYSCTL_CONF_FILE=/etc/sysctl.conf.local
 	SYSLOGD_RC_CONF_FILE=/etc/rc.conf.local
 elif [ -e /tmp/rc-vendor ]; then
 	BLACKLISTD_RC_CONF_FILE=/etc/defaults/vendor.conf
@@ -16,6 +17,7 @@ elif [ -e /tmp/rc-vendor ]; then
 	NETOPTIONS_RC_CONF_FILE=/etc/defaults/vendor.conf
 	ROUTING_RC_CONF_FILE=/etc/defaults/vendor.conf
 	SSHD_RC_CONF_FILE=/etc/defaults/vendor.conf
+	SYSCTL_CONF_FILE=/etc/sysctl.conf
 	SYSLOGD_RC_CONF_FILE=/etc/defaults/vendor.conf
 elif [ -e /tmp/rc-name ]; then
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf.d/blacklistd
@@ -24,6 +26,7 @@ elif [ -e /tmp/rc-name ]; then
 	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf.d/netoptions
 	ROUTING_RC_CONF_FILE=/etc/rc.conf.d/routing
 	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
+	SYSCTL_CONF_FILE=/etc/sysctl.conf.d/hardening.conf # XXX
 	SYSLOGD_RC_CONF_FILE=/etc/rc.conf.d/syslogd
 else
 	BLACKLISTD_RC_CONF_FILE=/etc/rc.conf
@@ -32,6 +35,7 @@ else
 	NETOPTIONS_RC_CONF_FILE=/etc/rc.conf
 	ROUTING_RC_CONF_FILE=/etc/rc.conf
 	SSHD_RC_CONF_FILE=/etc/rc.conf
+	SYSCTL_CONF_FILE=/etc/sysctl.conf
 	SYSLOGD_RC_CONF_FILE=/etc/rc.conf
 fi
 
@@ -96,7 +100,7 @@ sysrc -f "$CLEARTMP_RC_CONF_FILE" clear_tmp_enable=YES
 sysrc -f "$SYSLOGD_RC_CONF_FILE" syslogd_flags=-ss
 
 # Change sysctl default values
-cat > /etc/sysctl.conf <<- EOF
+cat > "$SYSCTL_CONF_FILE" <<- EOF
 debug.debugger_on_panic=0
 debug.trace_on_panic=1
 hw.kbd.keymap_restrict_change=4

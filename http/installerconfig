@@ -31,17 +31,21 @@ if [ "$RC_CONF_FILE" = 'local' ]; then
 	touch /tmp/rc-local
 	SSHD_RC_CONF_FILE=/etc/rc.conf.local
 	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.local
+	SYSCTL_CONF_FILE=/etc/sysctl.conf.local
 elif [ "$RC_CONF_FILE" = 'vendor' ]; then
 	touch /tmp/rc-vendor
 	SSHD_RC_CONF_FILE=/etc/defaults/vendor.conf
 	SENDMAIL_RC_CONF_FILE=/etc/defaults/vendor.conf
+	SYSCTL_CONF_FILE=/etc/sysctl.conf
 elif [ "$RC_CONF_FILE" = 'name' ]; then
 	touch /tmp/rc-name
 	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
 	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.d/sendmail
+	SYSCTL_CONF_FILE=/etc/sysctl.conf.d/reboot.conf # XXX
 else
 	SSHD_RC_CONF_FILE=/etc/rc.conf
 	SENDMAIL_RC_CONF_FILE=/etc/rc.conf
+	SYSCTL_CONF_FILE=/etc/sysctl.conf
 fi
 
 # Disable X11
@@ -71,7 +75,7 @@ echo 'vagrant' | pw usermod root -h 0
 	echo 'debug.trace_on_panic=1'
 	echo 'debug.debugger_on_panic=0'
 	echo 'kern.panic_reboot_wait_time=0'
-} >> /etc/sysctl.conf
+} >> "$SYSCTL_CONF_FILE"
 
 # The console is not interactive, so we might as well boot quickly
 sysrc -f /boot/loader.conf autoboot_delay=-1
