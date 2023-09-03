@@ -8,6 +8,11 @@ if [ -e /dev/vtbd0 ]; then
 	GEOM=vtbd0 # VirtIO (QEMU)
 fi
 
+if [ -z $GEOM ]; then
+	echo "ERROR: No disks found." >&2
+	exit 1
+fi
+
 if [ "$FILESYSTEM" = 'ufs' ]; then
 	PARTITIONS="$GEOM"
 else
