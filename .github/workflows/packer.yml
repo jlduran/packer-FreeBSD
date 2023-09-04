@@ -40,6 +40,11 @@ jobs:
         env:
           PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Where is OVMF_CODE.fd?
+        run: |
+          cd /usr/local
+          find . -name OVMF_CODE.fd
+
       - name: Build the Box
         run: packer build -only=qemu.freebsd .
         env:

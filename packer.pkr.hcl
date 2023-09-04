@@ -3,6 +3,9 @@ source "qemu" "freebsd" {
   boot_wait               = "5s"
   cpus                    = "${var.cpus}"
   disk_size               = "${var.disk_size}"
+  efi_boot                = true
+  efi_firmware_code       = "/usr/share/OVMF/OVMF_CODE.fd"
+  efi_firmware_vars       = "/usr/share/OVMF/OVMF_VARS.fd"
   headless                = true
   http_directory          = "http"
   iso_checksum            = "file:${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/CHECKSUM.SHA256-FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}"
