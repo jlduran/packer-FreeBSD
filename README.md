@@ -178,14 +178,15 @@ values, and invoke:
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:
 
-| Name         | Description                                                               |
-| ----         | -----------                                                               |
-| [`update`]   | Updates to the latest patch level (if applicable) and the latest packages |
-| [`vagrant`]  | Vagrant-related configuration                                             |
-| [`zeroconf`] | Enables zero-configuration networking                                     |
-| [`ansible`]  | Installs python and CA Root certificates                                  |
-| [`vmtools`]  | Virtual Machine-specific utilities                                        |
-| [`cleanup`]  | Cleanup script (must be called last)                                      |
+| Name           | Description                                                               |
+| ----           | -----------                                                               |
+| [`update`]     | Updates to the latest patch level (if applicable) and the latest packages |
+| [`vagrant`]    | Vagrant-related configuration                                             |
+| [`zeroconf`]   | Enables zero-configuration networking                                     |
+| [`ansible`]    | Installs python and CA Root certificates                                  |
+| [`cloud-init`] | Installs cloud-init                                                       |
+| [`vmtools`]    | Virtual Machine-specific utilities                                        |
+| [`cleanup`]    | Cleanup script (must be called last)                                      |
 
 The following scripts are also available:
 
@@ -211,6 +212,7 @@ the `.iso` image and save it to the `iso` directory.
 [VMWare Fusion]: https://www.vmware.com/products/fusion.html
 [`ansible`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/ansible.sh
 [`cleanup`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/cleanup.sh
+[`cloud-init`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/cloud-init.sh
 [`hardening`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/hardening.sh
 [`ports`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/ports.sh
 [`update`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/update.sh
