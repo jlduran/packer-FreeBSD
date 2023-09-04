@@ -17,7 +17,7 @@ source "qemu" "freebsd" {
 }
 
 source "virtualbox-iso" "freebsd" {
-  boot_command            = ["<wait25>FS1:<enter><wait>", "EFI\\BOOT\\BOOTx64.efi<enter><wait5>", "<esc><wait>", "boot -s<enter>", "<wait15s>", "/bin/sh<enter><wait>", "mdmfs -s 100m md /tmp<enter><wait>", "dhclient -l /tmp/dhclient.lease.vtnet0 vtnet0<enter><wait5>", "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig<enter><wait5>", "FILESYSTEM=${var.filesystem}<enter>", "export FILESYSTEM<enter>", "RC_CONF_FILE=${var.rc_conf_file}<enter>", "export RC_CONF_FILE<enter>", "bsdinstall script /tmp/installerconfig<enter>"]
+  boot_command            = ["<esc><wait>", "boot -s<enter>", "<wait15s>", "/bin/sh<enter><wait>", "mdmfs -s 100m md /tmp<enter><wait>", "dhclient -l /tmp/dhclient.lease.vtnet0 vtnet0<enter><wait5>", "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig<enter><wait5>", "FILESYSTEM=${var.filesystem}<enter>", "export FILESYSTEM<enter>", "ZFS_COMPRESSION=${var.zfs_compression}<enter>", "export ZFS_COMPRESSION<enter>", "RC_CONF_FILE=${var.rc_conf_file}<enter>", "export RC_CONF_FILE<enter>", "bsdinstall script /tmp/installerconfig<enter>"]
   boot_wait               = "10s"
   cpus                    = "${var.cpus}"
   chipset                 = "ich9"
@@ -42,7 +42,7 @@ source "virtualbox-iso" "freebsd" {
   ssh_port                = 22
   ssh_timeout             = "1000s"
   ssh_username            = "root"
-  vboxmanage              = [["modifyvm", "{{ .Name }}", "--mouse", "usbmultitouch", "--pae", "off"], ["storageattach", "{{ .Name }}", "--storagectl", "VirtIO Controller", "--port", "1", "--type", "hdd"], ["storagectl", "{{ .Name }}", "--name", "IDE Controller", "--remove"]]
+  vboxmanage              = [["modifyvm", "{{ .Name }}", "--mouse", "usbmultitouch", "--pae", "off"], ["storagectl", "{{ .Name }}", "--name", "IDE Controller", "--remove"]]
   virtualbox_version_file = ".vbox_version"
   vm_name                 = "box"
 }
