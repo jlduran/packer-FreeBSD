@@ -11,7 +11,7 @@ pw useradd -n vagrant -u 1001 -c 'Vagrant User' -d /home/vagrant \
 	-g 1001 -G 0 -m -M 0755 -w yes -s /usr/local/bin/bash
 
 # Configure sudo to allow the vagrant user
-echo 'vagrant ALL=(ALL) NOPASSWD: ALL' > /usr/local/etc/sudoers.d/vagrant
+echo 'vagrant ALL=(ALL:ALL) NOPASSWD: ALL' > /usr/local/etc/sudoers.d/vagrant
 chmod 0440 /usr/local/etc/sudoers.d/vagrant
 
 # Configure passwordless su to wheel users
