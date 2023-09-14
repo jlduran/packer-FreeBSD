@@ -27,16 +27,16 @@ fi
 case "$PACKER_BUILDER_TYPE" in
 
 	virtualbox-iso|virtualbox-ovf)
-		pkg install -qy virtualbox-ose-additions-nox11
+		# pkg install -qy virtualbox-ose-additions-nox11
 
-		sysrc -f "$DBUS_RC_CONF_FILE" dbus_enable=YES
-		sysrc -f "$VBOXGUEST_RC_CONF_FILE" vboxguest_enable=YES
-		sysrc -f "$VBOXSERVICE_RC_CONF_FILE" vboxservice_enable=YES
+		# sysrc -f "$DBUS_RC_CONF_FILE" dbus_enable=YES
+		# sysrc -f "$VBOXGUEST_RC_CONF_FILE" vboxguest_enable=YES
+		# sysrc -f "$VBOXSERVICE_RC_CONF_FILE" vboxservice_enable=YES
 
 		cat >> /boot/loader.conf <<- END
-		#VIRTUALBOX-BEGIN
-		vboxdrv_load="YES"
-		#VIRTUALBOX-END
+		# VIRTUALBOX-BEGIN
+		#vboxdrv_load="YES"
+		# VIRTUALBOX-END
 		END
 		;;
 
