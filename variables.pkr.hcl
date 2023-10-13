@@ -5,7 +5,7 @@ variable "arch" {
 
 variable "branch" {
   type    = string
-  default = "BETA5"
+  default = "RC1"
 }
 
 variable "build_date" {
