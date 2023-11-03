@@ -1,3 +1,6 @@
+> [!WARNING]
+> FreeBSD 14.0-RELEASE is currently failing to build on VirtualBox.
+
 packer-FreeBSD
 ==============
 
