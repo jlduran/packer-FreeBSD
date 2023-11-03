@@ -30,7 +30,7 @@ To create a box:
 
         $ packer init .
 
-3.  Build the box:
+3.  Build the box (`virtualbox-iso.freebsd` or `qemu.freebsd`):
 
         $ packer build -only=virtualbox-iso.freebsd .
 
