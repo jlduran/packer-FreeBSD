@@ -16,7 +16,9 @@ fi
 if [ "$FILESYSTEM" = 'ufs' ]; then
 	PARTITIONS="$GEOM"
 else
+	export ZFSBOOT_BOOT_TYPE="UEFI"
 	export ZFSBOOT_DISKS="$GEOM"
+	export ZFSBOOT_PARTITION_SCHEME="GPT"
 	if [ "$ZFS_COMPRESSION" = 'zstd' ]; then
 		export ZFSBOOT_POOL_CREATE_OPTIONS="-O compress=zstd -O atime=off"
 	fi
