@@ -52,12 +52,6 @@ case "$PACKER_BUILDER_TYPE" in
 		;;
 
 	parallels-iso|parallels-pvm)
-		mkdir /tmp/parallels
-		mount -o loop /root/prl-tools-lin.iso /tmp/parallels
-		/tmp/parallels/install --install-unattended-with-deps
-		umount /tmp/parallels
-		rmdir /tmp/parallels
-		rm /root/*.iso
 		;;
 
 	qemu)
