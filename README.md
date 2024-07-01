@@ -17,7 +17,7 @@ Prerequisites
 
 - [Vagrant]
 
-- [QEMU], [VirtualBox] or [VMWare Fusion]
+- [Parallels], [QEMU], [VirtualBox] or [VMWare Fusion]
 
 Instructions
 ------------
@@ -209,6 +209,7 @@ the `.iso` image and save it to the `iso` directory.
 [official FreeBSD]: https://app.vagrantup.com/freebsd
 [Release Branches]: https://docs.freebsd.org/en/books/dev-model/#release-branches
 [Packer]: https://developer.hashicorp.com/packer/downloads#install
+[Parallels]: https://www.parallels.com
 [QEMU]: https://www.qemu.org/download/
 [Vagrant]: https://developer.hashicorp.com/vagrant/downloads
 [VirtualBox]: https://www.virtualbox.org/wiki/Downloads
