@@ -27,7 +27,7 @@ jobs:
         run: packer validate .
 
   qemu:
-    runs-on: macos-latest
+    runs-on: macos-13
     name: QEMU Builder
     needs: validate
 
@@ -40,13 +40,16 @@ jobs:
         env:
           PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Install QEMU
+        run: brew install qemu
+
       - name: Build the Box
         run: packer build -only=qemu.freebsd .
         env:
-          ntpdate_hosts: ntp.ubuntu.com
+          ntpdate_hosts: time.apple.com
 
   virtualbox:
-    runs-on: macos-latest
+    runs-on: macos-13
     name: VirtualBox Builder
     needs: validate
 
@@ -59,7 +62,10 @@ jobs:
         env:
           PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Install VirtualBox
+        run: brew install --cask virtualbox
+
       - name: Build the Box
         run: packer build -only=virtualbox-iso.freebsd .
         env:
-          ntpdate_hosts: ntp.ubuntu.com
+          ntpdate_hosts: time.apple.com
