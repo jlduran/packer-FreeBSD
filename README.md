@@ -1,4 +1,4 @@
-> [!WARNING]
+> [!CAUTION]
 > FreeBSD 14.0-RELEASE onwards is failing to build on VirtualBox.
 
 packer-FreeBSD
@@ -7,7 +7,7 @@ packer-FreeBSD
 This repository contains the necessary tools to build a Vagrant-ready
 FreeBSD virtual machine using Packer.
 
-> [!NOTE]
+> [!TIP]
 > There are [official FreeBSD] VMs available from the Vagrant Cloud.
 
 Prerequisites
@@ -26,22 +26,30 @@ To create a box:
 
 1.  Clone this repository:
 
-        $ git clone https://github.com/jlduran/packer-FreeBSD.git
-        $ cd packer-FreeBSD
+    ```shell
+    $ git clone https://github.com/jlduran/packer-FreeBSD.git
+    $ cd packer-FreeBSD
+    ```
 
 2.  Initialize packer:
 
-        $ packer init .
+    ```shell
+    $ packer init .
+    ```
 
 3.  Build the box (`virtualbox-iso.freebsd` or `qemu.freebsd`):
 
-        $ packer build -only=virtualbox-iso.freebsd .
+    ```shell
+    $ packer build -only=virtualbox-iso.freebsd .
+    ```
 
 4.  Add it to the list of Vagrant boxes.  See
     [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
     more information.
 
-        $ vagrant box add builds/FreeBSD-14.0-RELEASE-amd64.box --name FreeBSD-14.0-RELEASE-amd64
+    ```shell
+    $ vagrant box add builds/FreeBSD-14.0-RELEASE-amd64.box --name FreeBSD-14.0-RELEASE-amd64
+    ```
 
 Sample `Vagrantbox` file
 ------------------------
@@ -176,7 +184,9 @@ The following variables can be set:
 Create a `variables.pkrvars.hcl` file overriding the default
 values, and invoke:
 
-    $ packer build -var-file="variables.pkrvars.hcl" .
+```shell
+$ packer build -var-file="variables.pkrvars.hcl" .
+```
 
 You can also select which components you wish to install.  By default,
 it runs the following provisioning scripts:
