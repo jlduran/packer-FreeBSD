@@ -70,7 +70,7 @@ build {
 
   provisioner "shell" {
     execute_command = "chmod +x {{ .Path }}; env {{ .Vars }} {{ .Path }}"
-    scripts         = ["scripts/update.sh", "scripts/vagrant.sh", "scripts/zeroconf.sh", "scripts/ansible.sh", "scripts/vmtools.sh", "scripts/cleanup.sh"]
+    scripts         = ["scripts/pkgbase.sh", "scripts/vagrant.sh", "scripts/zeroconf.sh", "scripts/ansible.sh", "scripts/vmtools.sh", "scripts/cleanup.sh"]
   }
 
   post-processor "vagrant" {
