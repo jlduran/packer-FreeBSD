@@ -199,11 +199,12 @@ it runs the following provisioning scripts:
 
 The following scripts are also available:
 
-| Name           | Description                      |
-| ----           | -----------                      |
-| [`cloud-init`] | Installs cloud-init              |
-| [`hardening`]  | Provides basic hardening options |
-| [`ports`]      | Installs the FreeBSD ports tree  |
+| Name           | Description                                        |
+| ----           | -----------                                        |
+| [`cloud-init`] | Installs cloud-init                                |
+| [`hardening`]  | Provides basic hardening options                   |
+| [`pkgbase`]    | pkg-based FreeBSD installation (replaces `update`) |
+| [`ports`]      | Installs the FreeBSD ports tree                    |
 
 ### Handling `.iso` and `.box` files
 
