@@ -42,6 +42,8 @@ fi
 # Disable weak SSH keys
 sysrc -f "$SSHD_RC_CONF_FILE" sshd_ecdsa_enable=NO
 rm -f /etc/ssh/ssh_host_ecdsa_key*
+sysrc -f "$SSHD_RC_CONF_FILE" sshd_rsa_enable=NO
+rm -f /etc/ssh/ssh_host_rsa_key*
 
 # Setup firewall
 sysrc -f "$IPFW_RC_CONF_FILE" firewall_enable=YES
