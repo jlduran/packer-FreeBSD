@@ -88,6 +88,8 @@ sed -i '' -e 's/^#VersionAddendum .*$/VersionAddendum none/' \
 	/etc/ssh/sshd_config
 sed -i '' -e 's/^#X11Forwarding yes/X11Forwarding no/' \
 	/etc/ssh/sshd_config
+sed -i '' -e 's/^#UseDNS yes/UseDNS no/' \
+	/etc/ssh/sshd_config
 
 # Routing options
 sysrc -f "$ROUTING_RC_CONF_FILE" icmp_drop_redirect=YES
