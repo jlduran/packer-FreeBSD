@@ -49,7 +49,6 @@ jobs:
           ntpdate_hosts: time.apple.com
 
   virtualbox:
-    if: false
     runs-on: macos-13
     name: VirtualBox Builder
     needs: validate
