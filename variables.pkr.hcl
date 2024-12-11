@@ -65,5 +65,5 @@ variable "rc_conf_file" {
 
 variable "revision" {
   type    = string
-  default = "14.1"
+  default = "14.2"
 }
