@@ -26,20 +26,20 @@ To create a box:
 
 1.  Clone this repository:
 
-    ```shell
+    ```console
     $ git clone https://github.com/jlduran/packer-FreeBSD.git
     $ cd packer-FreeBSD
     ```
 
 2.  Initialize packer:
 
-    ```shell
+    ```console
     $ packer init .
     ```
 
 3.  Build the box (`virtualbox-iso.freebsd` or `qemu.freebsd`):
 
-    ```shell
+    ```console
     $ packer build -only=virtualbox-iso.freebsd .
     ```
 
@@ -47,7 +47,7 @@ To create a box:
     [Handling `.iso` and `.box` files](#handling-iso-and-box-files) for
     more information.
 
-    ```shell
+    ```console
     $ vagrant box add builds/FreeBSD-14.2-RELEASE-amd64.box --name FreeBSD-14.2-RELEASE-amd64
     ```
 
@@ -184,7 +184,7 @@ The following variables can be set:
 Create a `variables.pkrvars.hcl` file overriding the default
 values, and invoke:
 
-```shell
+```console
 $ packer build -var-file="variables.pkrvars.hcl" .
 ```
 
