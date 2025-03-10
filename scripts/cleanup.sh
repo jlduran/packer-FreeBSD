@@ -4,6 +4,10 @@ set -e
 # Disable root logins
 sed -i '' -e 's/^PermitRootLogin yes/#PermitRootLogin no/' /etc/ssh/sshd_config
 
+# Cleanup packages to reduce image size
+pkg autoremove -y
+pkg clean -y
+
 # Purge files we no longer need
 rm -rf /boot/kernel.old
 # /boot/efi is an MS-DOS mount, allow rm -f to fail (#281033)
