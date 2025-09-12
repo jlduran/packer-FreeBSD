@@ -20,7 +20,7 @@ variable "cpus" {
 
 variable "directory" {
   type    = string
-  default = "releases"
+  default = "snapshots"
 }
 
 variable "disk_size" {
