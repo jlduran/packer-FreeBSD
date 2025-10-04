@@ -27,7 +27,7 @@ jobs:
         run: packer validate .
 
   qemu:
-    runs-on: macos-13
+    runs-on: macos-latest
     name: QEMU Builder
     needs: validate
 
@@ -50,7 +50,7 @@ jobs:
 
   virtualbox:
     if: false
-    runs-on: macos-13
+    runs-on: macos-latest
     name: VirtualBox Builder
     needs: validate
 
