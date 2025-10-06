@@ -5,12 +5,12 @@ variable "arch" {
 
 variable "branch" {
   type    = string
-  default = "ALPHA4"
+  default = "ALPHA5"
 }
 
 variable "build_date" {
   type    = string
-  default = "-20250927"
+  default = "-20251004"
 }
 
 variable "cpus" {
@@ -40,7 +40,7 @@ variable "zfs_compression" {
 
 variable "git_commit" {
   type    = string
-  default = "-d2b670b27f37-280334"
+  default = "-1c0898edf28f-280541"
 }
 
 variable "guest_os_type" {
