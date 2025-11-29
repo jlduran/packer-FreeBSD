@@ -1,6 +1,3 @@
-> [!CAUTION]
-> FreeBSD 14.0-RELEASE onwards is failing to build on VirtualBox.
-
 packer-FreeBSD
 ==============
 
@@ -37,10 +34,10 @@ To create a box:
     $ packer init .
     ```
 
-3.  Build the box (`virtualbox-iso.freebsd` or `qemu.freebsd`):
+3.  Build the box (`qemu.freebsd` or `virtualbox-iso.freebsd`):
 
     ```console
-    $ packer build -only=virtualbox-iso.freebsd .
+    $ packer build -only=qemu.freebsd .
     ```
 
 4.  Add it to the list of Vagrant boxes.  See

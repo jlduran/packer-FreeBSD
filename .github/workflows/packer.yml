@@ -45,28 +45,3 @@ jobs:
 
       - name: Build the Box
         run: packer build -only=qemu.freebsd .
-        env:
-          ntpdate_hosts: time.apple.com
-
-  virtualbox:
-    if: false
-    runs-on: macos-latest
-    name: VirtualBox Builder
-    needs: validate
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v5
-
-      - name: Initialize Packer
-        run: packer init .
-        env:
-          PACKER_GITHUB_API_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Install VirtualBox
-        run: brew install --cask virtualbox
-
-      - name: Build the Box
-        run: packer build -only=virtualbox-iso.freebsd .
-        env:
-          ntpdate_hosts: time.apple.com
