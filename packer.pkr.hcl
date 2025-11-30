@@ -8,7 +8,7 @@ source "parallels-iso" "freebsd" {
   hard_drive_interface    = "sata"
   http_directory          = "http"
   iso_checksum            = "file:${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/CHECKSUM.SHA256-FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}"
-  iso_urls                = ["iso/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-dvd1.iso", "${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-dvd1.iso"]
+  iso_urls                = ["iso/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso", "${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso"]
   memory                  = "${var.memory}"
   shutdown_command        = "poweroff"
   ssh_password            = "vagrant"
@@ -26,7 +26,7 @@ source "qemu" "freebsd" {
   headless                = true
   http_directory          = "http"
   iso_checksum            = "file:${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/CHECKSUM.SHA256-FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}"
-  iso_urls                = ["iso/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-dvd1.iso", "${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-dvd1.iso"]
+  iso_urls                = ["iso/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso", "${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso"]
   memory                  = "${var.memory}"
   shutdown_command        = "poweroff"
   ssh_password            = "vagrant"
@@ -49,7 +49,7 @@ source "virtualbox-iso" "freebsd" {
   http_directory          = "http"
   iso_checksum            = "file:${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/CHECKSUM.SHA256-FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}"
   iso_interface           = "sata"
-  iso_urls                = ["iso/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-dvd1.iso", "${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-dvd1.iso"]
+  iso_urls                = ["iso/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso", "${var.mirror}/${var.directory}/ISO-IMAGES/${var.revision}/FreeBSD-${var.revision}-${var.branch}-${var.arch}${var.build_date}${var.git_commit}-disc1.iso"]
   memory                  = "${var.memory}"
   shutdown_command        = "poweroff"
   ssh_password            = "vagrant"
