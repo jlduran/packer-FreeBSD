@@ -80,5 +80,8 @@ echo 'vagrant' | pw usermod root -h 0
 # The console is not interactive, so we might as well boot quickly
 sysrc -f /boot/loader.conf autoboot_delay=-1
 
+# Save file system type
+echo "$FILESYSTEM" > /tmp/fstyp
+
 # Reboot
 shutdown -r now
