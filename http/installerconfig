@@ -14,7 +14,7 @@ if [ -z $GEOM ]; then
 fi
 
 if [ "$FILESYSTEM" = 'ufs' ]; then
-	PARTITIONS="$GEOM"
+	PARTITIONS=DEFAULT
 else
 	export ZFSBOOT_DISKS="$GEOM"
 	if [ "$ZFS_COMPRESSION" = 'zstd' ]; then
