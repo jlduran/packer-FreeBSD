@@ -48,6 +48,8 @@ else
 	SYSCTL_CONF_FILE=/etc/sysctl.conf
 fi
 
+pkg install puppet
+
 # Disable X11
 echo 'OPTIONS_UNSET+=X11' >> /etc/make.conf
 
