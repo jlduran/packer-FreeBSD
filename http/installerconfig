@@ -26,6 +26,9 @@ fi
 
 #!/bin/sh
 
+ASSUME_ALWAYS_YES=YES
+export ASSUME_ALWAYS_YES
+
 # Setup rc.conf location sentinel
 if [ "$RC_CONF_FILE" = 'local' ]; then
 	touch /tmp/rc-local
