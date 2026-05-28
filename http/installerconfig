@@ -13,6 +13,7 @@ if [ -z $GEOM ]; then
 	exit 1
 fi
 
+DISTRIBUTIONS="base.txz kernel.txz"
 if [ "$FILESYSTEM" = 'ufs' ]; then
 	PARTITIONS=DEFAULT
 else
