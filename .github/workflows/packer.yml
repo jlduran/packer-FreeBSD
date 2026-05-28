@@ -35,6 +35,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
 
+      - name: Redirect Console Output
+        run: |
+          sed -i '' \
+            -e 's/headless *= *true/headless = true\n  qemuargs = [ ["-serial", "file:console.log"] ]/' \
+            -e 's/boot -s/boot -h -s/g' \
+            packer.pkr.hcl
+
       - name: Initialize Packer
         run: packer init .
         env:
@@ -45,3 +52,11 @@ jobs:
 
       - name: Build the Box
         run: packer build -only=qemu.freebsd .
+
+      - name: Upload Console Output
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: qemu-console
+          path: console.log
+          archive: false
