@@ -39,7 +39,7 @@ jobs:
         run: |
           sed -i '' \
             -e 's/headless *= *true/headless = true\n  qemuargs = [ ["-serial", "file:console.log"] ]/' \
-            -e 's/boot -s/boot -h -s/g' \
+            -e 's/boot -s/boot -D -s/g' \
             packer.pkr.hcl
 
       - name: Initialize Packer
