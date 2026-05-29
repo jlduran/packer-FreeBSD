@@ -14,6 +14,7 @@ if [ -z $GEOM ]; then
 fi
 
 DISTRIBUTIONS="base.txz kernel.txz"
+export DISTRIBUTIONS
 if [ "$FILESYSTEM" = 'ufs' ]; then
 	PARTITIONS=DEFAULT
 else
