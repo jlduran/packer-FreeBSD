@@ -14,11 +14,6 @@ pw useradd -n vagrant -u 1001 -c 'Vagrant User' -d /home/vagrant \
 echo 'vagrant ALL=(ALL:ALL) NOPASSWD: ALL' > /usr/local/etc/sudoers.d/vagrant
 chmod 0440 /usr/local/etc/sudoers.d/vagrant
 
-# Configure passwordless su to wheel users
-sed -i '' -e '/pam_group.so/ a\
-auth		sufficient	pam_group.so		trust use_uid ruser' \
-	/etc/pam.d/su
-
 # Configure the vagrant ssh key
 mkdir -m 0700 /home/vagrant/.ssh
 fetch -am --no-verify-peer -o /home/vagrant/.ssh/authorized_keys \
