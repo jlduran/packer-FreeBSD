@@ -203,7 +203,6 @@ The following scripts are also available:
 | ----           | -----------                      |
 | [`cloud-init`] | Installs cloud-init              |
 | [`hardening`]  | Provides basic hardening options |
-| [`ports`]      | Installs the FreeBSD ports tree  |
 
 ### Handling `.iso` and `.box` files
 
@@ -225,7 +224,6 @@ the `.iso` image and save it to the `iso` directory.
 [`cleanup`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/cleanup.sh
 [`cloud-init`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/cloud-init.sh
 [`hardening`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/hardening.sh
-[`ports`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/ports.sh
 [`update`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/update.sh
 [`vagrant`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/vagrant.sh
 [`vmtools`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/vmtools.sh
