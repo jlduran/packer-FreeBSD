@@ -45,7 +45,7 @@ To create a box:
     more information.
 
     ```console
-    $ vagrant box add builds/FreeBSD-15.0-RELEASE-amd64.box --name FreeBSD-15.0-RELEASE-amd64
+    $ vagrant box add builds/FreeBSD-15.1-RELEASE-amd64.box --name FreeBSD-15.1-RELEASE-amd64
     ```
 
 Sample `Vagrantbox` file
@@ -67,7 +67,7 @@ ansible_raw_arguments = []
 Vagrant.configure(2) do |config|
   servers.each do |server|
     config.vm.define server[:name] do |box|
-      box.vm.box      = 'FreeBSD-15.0-RELEASE-amd64'
+      box.vm.box      = 'FreeBSD-15.1-RELEASE-amd64'
       box.vm.hostname = server[:name]
       box.vm.provider 'virtualbox' do |v|
         v.default_nic_type       = 'virtio'
@@ -121,7 +121,7 @@ guest_os_type   = "FreeBSD_64"
 memory          = 1024
 mirror          = "https://download.freebsd.org"
 rc_conf_file    = ""
-revision        = "15.0"
+revision        = "15.1"
 ```
 
 The following variables can be set:
@@ -133,7 +133,7 @@ The following variables can be set:
 -   `memory` is the amount of RAM in megabytes assigned.  _Default:_
     `1024`
 
--   `revision` is the FreeBSD revision number.  _Default:_ `15.0`
+-   `revision` is the FreeBSD revision number.  _Default:_ `15.1`
 
 -   `branch` used in conjunction with `build_date`, `git_commit` and
     `directory`.  _Default:_ `RELEASE`
@@ -203,7 +203,6 @@ The following scripts are also available:
 | ----           | -----------                      |
 | [`cloud-init`] | Installs cloud-init              |
 | [`hardening`]  | Provides basic hardening options |
-| [`ports`]      | Installs the FreeBSD ports tree  |
 
 ### Handling `.iso` and `.box` files
 
@@ -225,7 +224,6 @@ the `.iso` image and save it to the `iso` directory.
 [`cleanup`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/cleanup.sh
 [`cloud-init`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/cloud-init.sh
 [`hardening`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/hardening.sh
-[`ports`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/ports.sh
 [`update`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/update.sh
 [`vagrant`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/vagrant.sh
 [`vmtools`]: https://github.com/jlduran/packer-FreeBSD/blob/main/scripts/vmtools.sh

@@ -13,6 +13,8 @@ if [ -z $GEOM ]; then
 	exit 1
 fi
 
+BSDINSTALL_PKG_REPOS_DIR=/usr/freebsd-packages/repos
+export BSDINSTALL_PKG_REPOS_DIR
 if [ "$FILESYSTEM" = 'ufs' ]; then
 	PARTITIONS=DEFAULT
 else
