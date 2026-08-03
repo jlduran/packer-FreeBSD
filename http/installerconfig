@@ -32,21 +32,17 @@ fi
 if [ "$RC_CONF_FILE" = 'local' ]; then
 	touch /tmp/rc-local
 	SSHD_RC_CONF_FILE=/etc/rc.conf.local
-	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.local
 	SYSCTL_CONF_FILE=/etc/sysctl.conf.local
 elif [ "$RC_CONF_FILE" = 'vendor' ]; then
 	touch /tmp/rc-vendor
 	SSHD_RC_CONF_FILE=/etc/defaults/vendor.conf
-	SENDMAIL_RC_CONF_FILE=/etc/defaults/vendor.conf
 	SYSCTL_CONF_FILE=/etc/sysctl.conf
 elif [ "$RC_CONF_FILE" = 'name' ]; then
 	touch /tmp/rc-name
 	SSHD_RC_CONF_FILE=/etc/rc.conf.d/sshd
-	SENDMAIL_RC_CONF_FILE=/etc/rc.conf.d/sendmail
 	SYSCTL_CONF_FILE=/etc/sysctl.conf.d/reboot.conf # XXX
 else
 	SSHD_RC_CONF_FILE=/etc/rc.conf
-	SENDMAIL_RC_CONF_FILE=/etc/rc.conf
 	SYSCTL_CONF_FILE=/etc/sysctl.conf
 fi
 
@@ -65,9 +61,6 @@ sysrc -f "$SSHD_RC_CONF_FILE" sshd_enable=YES
 sed -i '' -e 's/^#UseDNS yes/UseDNS no/' /etc/ssh/sshd_config
 # Allow root logins during build.  Deactivated upon cleanup
 sed -i '' -e 's/^#PermitRootLogin no/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# Disable sendmail
-sysrc -f "$SENDMAIL_RC_CONF_FILE" sendmail_enable=NONE
 
 # Change root's password to vagrant
 echo 'vagrant' | pw usermod root -h 0
