@@ -5,7 +5,7 @@ variable "arch" {
 
 variable "branch" {
   type    = string
-  default = "RELEASE"
+  default = "BETA1"
 }
 
 variable "build_date" {
@@ -65,5 +65,5 @@ variable "rc_conf_file" {
 
 variable "revision" {
   type    = string
-  default = "15.1"
+  default = "15.2"
 }
