@@ -2,7 +2,8 @@
 set -e
 
 # Set the time
-service ntpdate onestart || true
+service ntpd onefetch || true
+timeout 5 ntpd -gq || true
 
 # Update FreeBSD
 pkg upgrade -qy
